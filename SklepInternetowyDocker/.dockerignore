@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/.idea/
+.git/
+.gitignore
+.env
+publish/
+README.md
