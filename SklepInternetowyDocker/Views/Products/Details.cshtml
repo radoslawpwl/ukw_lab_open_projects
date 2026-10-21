@@ -1,0 +1,25 @@
+@model SklepInternetowyDocker.Models.Product
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<h1>@Model.Name</h1>
+<p class="text-muted">Kategoria: @Model.Category?.Name</p>
+
+@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+{
+    <img src="@Model.ImageUrl"
+         class="img-fluid mb-3"
+         style="max-height: 400px"
+         alt="@Model.Name">
+}
+
+<p>@Model.Description</p>
+<p class="fs-4 fw-bold">@Model.Price.ToString("C")</p>
+
+<form asp-controller="Cart" asp-action="Add" method="post">
+    <input type="hidden" name="productId" value="@Model.Id">
+    <button class="btn btn-success" type="submit">Dodaj do koszyka</button>
+    <a class="btn btn-secondary" asp-action="Index">Wróć do produktów</a>
+</form>

@@ -1,0 +1,64 @@
+@model IEnumerable<SklepInternetowyDocker.Models.Product>
+@using SklepInternetowyDocker.Models
+
+@{
+    ViewData["Title"] = "Produkty";
+    var categories = ViewBag.Categories as IEnumerable<Category> ?? [];
+    int? selectedCategoryId = ViewBag.SelectedCategoryId;
+}
+
+<h1>Produkty</h1>
+
+<nav class="mb-4" aria-label="Kategorie produktów">
+    <a class="btn @(selectedCategoryId is null ? "btn-primary" : "btn-outline-primary")"
+       asp-action="Index">Wszystkie</a>
+
+    @foreach (var category in categories)
+    {
+        <a class="btn @(selectedCategoryId == category.Id ? "btn-primary" : "btn-outline-primary")"
+           asp-action="Index"
+           asp-route-categoryId="@category.Id">
+            @category.Name
+        </a>
+    }
+</nav>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var product in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                @if (!string.IsNullOrWhiteSpace(product.ImageUrl))
+                {
+                    <img src="@product.ImageUrl"
+                         class="card-img-top"
+                         alt="@product.Name">
+                }
+                <div class="card-body">
+                    <h2 class="card-title h5">@product.Name</h2>
+                    <p class="card-text">@product.Description</p>
+                    <p class="fw-bold">@product.Price.ToString("C")</p>
+                    <a class="btn btn-outline-secondary"
+                       asp-action="Details"
+                       asp-route-id="@product.Id">
+                        Szczegóły
+                    </a>
+                    <form class="d-inline"
+                          asp-controller="Cart"
+                          asp-action="Add"
+                          method="post">
+                        <input type="hidden" name="productId" value="@product.Id">
+                        <button class="btn btn-success" type="submit">
+                            Dodaj do koszyka
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">W tej kategorii nie ma jeszcze produktów.</div>
+}
