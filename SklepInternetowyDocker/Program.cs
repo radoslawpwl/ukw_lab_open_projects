@@ -22,6 +22,7 @@ using (var scope = app.Services.CreateScope())
         .GetRequiredService<ApplicationDbContext>();
 
     await dbContext.Database.MigrateAsync();
+    await DbInitializer.SeedAsync(dbContext);
 }
 
 // Configure the HTTP request pipeline.
