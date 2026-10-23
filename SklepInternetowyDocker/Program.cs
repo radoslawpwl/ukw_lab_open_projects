@@ -60,7 +60,7 @@ using (var scope = app.Services.CreateScope())
     await dbContext.Database.MigrateAsync();
     await DbInitializer.SeedAsync(dbContext);
 }
-
+app.UseHttpsRedirection();
 // Konfiguracja potoku HTTP.
 if (app.Environment.IsDevelopment())
 {
@@ -73,7 +73,7 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+
 app.UseRouting();
 app.UseRateLimiter();
 app.UseSession();

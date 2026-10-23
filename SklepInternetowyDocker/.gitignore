@@ -10,3 +10,5 @@ publish/
 app.db
 *.sql
 *.dump
+README.md
+certs/
