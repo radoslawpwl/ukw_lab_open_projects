@@ -46,7 +46,7 @@ public class CartController(ApplicationDbContext context) : Controller
         }
 
         SaveCart(cart);
-        TempData["Message"] = "Produkt został dodany do koszyka.";
+        TempData["Message"] = "Usługa została dodana do koszyka.";
         return RedirectToAction(nameof(Index));
     }
 

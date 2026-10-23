@@ -1,44 +1,42 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SklepInternetowyDocker</title>
+    <title>@ViewData["Title"] | RP-bit</title>
+    <meta name="theme-color" content="#08080a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght&#64;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SklepInternetowyDocker.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Menu główne">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SklepInternetowyDocker</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" aria-label="RP-bit — sklep z usługami IT">
+                    <img src="~/rp-bit-logo.png" asp-append-version="true" width="192" height="32" alt="RP-bit" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation" aria-controls="main-navigation"
+                        aria-expanded="false" aria-label="Rozwiń menu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div id="main-navigation" class="navbar-collapse collapse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Usługi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" href="https://www.rp-bit.com/" target="_blank" rel="noopener noreferrer">O RP-bit</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark"
-                                asp-controller="Products"
-                                asp-action="Index">
-                                    Produkty
-                            </a>
+                            <a class="nav-link text-dark" href="mailto:contact@rp-bit.com">Kontakt</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark"
-                                asp-controller="Cart"
-                                asp-action="Index">
-                                    Koszyk
-                            </a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Koszyk usług</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -52,9 +50,17 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - SklepInternetowyDocker - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer text-muted">
+        <div class="container footer-content">
+            <div>
+                <span class="footer-brand">RP-bit</span>
+                <span>Cybersecurity &middot; Infrastructure &middot; Private AI</span>
+            </div>
+            <div class="footer-links">
+                <a href="mailto:contact@rp-bit.com">contact@rp-bit.com</a>
+                <a asp-area="" asp-controller="Home" asp-action="Privacy">Prywatność</a>
+                <span>&copy; @DateTime.UtcNow.Year RP-bit</span>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

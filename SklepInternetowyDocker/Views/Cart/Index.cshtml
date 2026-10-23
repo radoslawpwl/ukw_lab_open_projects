@@ -1,11 +1,17 @@
 @model IReadOnlyCollection<SklepInternetowyDocker.Models.CartItem>
 
 @{
-    ViewData["Title"] = "Koszyk";
+    ViewData["Title"] = "Koszyk usług";
     var total = Model.Sum(item => item.Total);
+    var currency = System.Globalization.CultureInfo.GetCultureInfo("pl-PL");
+    var inquiryBody = "Dzień dobry, proszę o potwierdzenie zakresu i terminu realizacji usług:\n\n"
+        + string.Join("\n", Model.Select(item => $"{item.ProductName} — {item.Quantity} pakiet(y), {item.Total.ToString("N2", currency)} zł netto"))
+        + $"\n\nSuma orientacyjna: {total.ToString("N2", currency)} zł netto.";
+    var inquiryUrl = "mailto:contact@rp-bit.com?subject=Zapytanie%20o%20uslugi%20RP-bit&body=" + Uri.EscapeDataString(inquiryBody);
 }
 
-<h1>Koszyk</h1>
+<p class="eyebrow">RP-bit / WYBRANE PAKIETY</p>
+<h1>Koszyk usług</h1>
 
 @if (TempData["Message"] is string message)
 {
@@ -14,11 +20,11 @@
 
 @if (Model.Count == 0)
 {
-    <div class="alert alert-info">Koszyk jest pusty.</div>
+    <p class="text-muted mb-4">Nie masz jeszcze wybranych usług.</p>
     <a class="btn btn-primary"
        asp-controller="Products"
        asp-action="Index">
-        Zobacz produkty
+        Przeglądaj usługi
     </a>
 }
 else
@@ -26,10 +32,10 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Produkt</th>
-                <th>Cena</th>
-                <th>Liczba</th>
-                <th>Razem</th>
+                <th scope="col">Usługa</th>
+                <th scope="col">Cena netto</th>
+                <th scope="col">Pakiety</th>
+                <th scope="col">Razem netto</th>
                 <th></th>
             </tr>
         </thead>
@@ -38,9 +44,9 @@ else
             {
                 <tr>
                     <td>@item.ProductName</td>
-                    <td>@item.UnitPrice.ToString("C")</td>
+                    <td>@item.UnitPrice.ToString("N2", currency) zł</td>
                     <td>@item.Quantity</td>
-                    <td>@item.Total.ToString("C")</td>
+                    <td>@item.Total.ToString("N2", currency) zł</td>
                     <td>
                         <form asp-action="Remove" method="post">
                             <input type="hidden"
@@ -56,16 +62,22 @@ else
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="3">Suma</th>
-                <th>@total.ToString("C")</th>
+                <th colspan="3">Suma netto</th>
+                <th>@total.ToString("N2", currency) zł</th>
                 <th></th>
             </tr>
         </tfoot>
     </table>
 
-    <form asp-action="Clear" method="post">
-        <button class="btn btn-outline-danger" type="submit">
-            Wyczyść koszyk
-        </button>
-    </form>
+    <div class="service-detail-actions">
+        <a class="btn btn-primary" href="@inquiryUrl">Zapytaj o realizację</a>
+        <a class="btn btn-outline-secondary" asp-controller="Products" asp-action="Index">Dodaj kolejną usługę</a>
+        <form asp-action="Clear" method="post">
+            <button class="btn btn-outline-danger" type="submit">Wyczyść koszyk</button>
+        </form>
+    </div>
+    <p class="pricing-note">
+        Koszyk służy do przygotowania zapytania, nie stanowi złożenia zamówienia ani płatności.
+        Suma jest orientacyjna i nie zawiera ewentualnego VAT. Zakres, termin i ostateczna wycena wymagają potwierdzenia.
+    </p>
 }

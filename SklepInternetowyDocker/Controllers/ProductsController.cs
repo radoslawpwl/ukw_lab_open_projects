@@ -19,6 +19,7 @@ public class ProductsController(ApplicationDbContext context) : Controller
         }
 
         ViewBag.Categories = await context.Categories
+            .Where(category => context.Products.Any(product => product.CategoryId == category.Id && product.IsAvailable))
             .OrderBy(category => category.Name)
             .ToListAsync();
 

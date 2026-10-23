@@ -2,24 +2,35 @@
 
 @{
     ViewData["Title"] = Model.Name;
+    var currency = System.Globalization.CultureInfo.GetCultureInfo("pl-PL");
+    var inquiryUrl = "mailto:contact@rp-bit.com?subject=" + Uri.EscapeDataString("RP-bit: " + Model.Name);
 }
 
+<a class="d-inline-block mb-4" asp-action="Index">Wszystkie usługi</a>
+<p class="service-category">@Model.Category?.Name</p>
 <h1>@Model.Name</h1>
-<p class="text-muted">Kategoria: @Model.Category?.Name</p>
 
 @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
 {
     <img src="@Model.ImageUrl"
-         class="img-fluid mb-3"
-         style="max-height: 400px"
-         alt="@Model.Name">
+         class="service-detail-image"
+         alt="" width="1200" height="457" />
 }
 
-<p>@Model.Description</p>
-<p class="fs-4 fw-bold">@Model.Price.ToString("C")</p>
+<h2 class="h4 mb-3">Zakres pakietu</h2>
+<p class="service-detail-copy">@Model.Description</p>
+<p class="service-price">@Model.Price.ToString("N2", currency) zł <span>netto / pakiet</span></p>
 
-<form asp-controller="Cart" asp-action="Add" method="post">
-    <input type="hidden" name="productId" value="@Model.Id">
-    <button class="btn btn-success" type="submit">Dodaj do koszyka</button>
-    <a class="btn btn-secondary" asp-action="Index">Wróć do produktów</a>
-</form>
+<div class="service-detail-actions">
+    <form asp-controller="Cart" asp-action="Add" method="post">
+        <input type="hidden" name="productId" value="@Model.Id" />
+        <button class="btn btn-primary" type="submit">Dodaj usługę do koszyka</button>
+    </form>
+    <a class="btn btn-outline-secondary" href="@inquiryUrl">Zapytaj o zakres i termin</a>
+</div>
+
+<aside class="pricing-note">
+    Cena orientacyjna netto, przed ewentualnym VAT. Realizacja po potwierdzeniu zakresu, terminu i wyceny.
+    Koszty sprzętu, licencji i chmury poza pakietem, chyba że opis wskazuje inaczej.
+    Testy bezpieczeństwa są realizowane wyłącznie za pisemną zgodą właściciela systemu.
+</aside>
