@@ -1,0 +1,116 @@
+@page
+@model SklepInternetowyDocker.Areas.Identity.Pages.Account.Manage.IndexModel
+@{
+    ViewData["Title"] = "Profil";
+    ViewData["ActivePage"] = "Index";
+    ViewData["ParentLayout"] = "/Views/Shared/_Layout.cshtml";
+    Layout = "/Areas/Identity/Pages/Account/Manage/_Layout.cshtml";
+}
+
+<h2 class="h3 mb-4">Dane profilu</h2>
+
+@if (!string.IsNullOrEmpty(Model.StatusMessage))
+{
+    <div class="alert alert-success" role="status">@Model.StatusMessage</div>
+}
+
+<form id="profile-form" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+    <div class="row g-3 mb-4">
+        <div class="col-lg-6">
+            <label for="username" class="form-label">Login</label>
+            <input id="username" class="form-control" value="@Model.Username" autocomplete="username" disabled />
+        </div>
+        <div class="col-lg-6">
+            <label asp-for="Input.PhoneNumber" class="form-label"></label>
+            <input asp-for="Input.PhoneNumber" class="form-control" type="tel" autocomplete="tel" />
+            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <section class="col-lg-6" aria-labelledby="shipping-heading">
+            <h3 id="shipping-heading" class="h4 mb-3">Dane do wysyłki</h3>
+            <div class="mb-3">
+                <label asp-for="Input.ShippingRecipient" class="form-label"></label>
+                <input asp-for="Input.ShippingRecipient" class="form-control" autocomplete="shipping name" />
+                <span asp-validation-for="Input.ShippingRecipient" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.ShippingStreet" class="form-label"></label>
+                <input asp-for="Input.ShippingStreet" class="form-control" autocomplete="shipping street-address" />
+                <span asp-validation-for="Input.ShippingStreet" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.ShippingPostalCode" class="form-label"></label>
+                <input asp-for="Input.ShippingPostalCode" class="form-control" autocomplete="shipping postal-code" />
+                <span asp-validation-for="Input.ShippingPostalCode" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.ShippingCity" class="form-label"></label>
+                <input asp-for="Input.ShippingCity" class="form-control" autocomplete="shipping address-level2" />
+                <span asp-validation-for="Input.ShippingCity" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.ShippingCountry" class="form-label"></label>
+                <input asp-for="Input.ShippingCountry" class="form-control" autocomplete="shipping country-name" />
+                <span asp-validation-for="Input.ShippingCountry" class="text-danger"></span>
+            </div>
+        </section>
+
+        <section class="col-lg-6" aria-labelledby="invoice-heading">
+            <h3 id="invoice-heading" class="h4 mb-3">Dane do faktury</h3>
+            <div class="mb-3">
+                <label asp-for="Input.InvoiceRecipient" class="form-label"></label>
+                <input asp-for="Input.InvoiceRecipient" class="form-control" autocomplete="billing organization" />
+                <span asp-validation-for="Input.InvoiceRecipient" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.InvoiceTaxNumber" class="form-label"></label>
+                <input asp-for="Input.InvoiceTaxNumber" class="form-control" />
+                <span asp-validation-for="Input.InvoiceTaxNumber" class="text-danger"></span>
+            </div>
+            <div class="form-check mb-3">
+                <input asp-for="Input.InvoiceUsesShippingAddress" class="form-check-input" aria-controls="invoice-address" />
+                <label asp-for="Input.InvoiceUsesShippingAddress" class="form-check-label"></label>
+            </div>
+            <fieldset id="invoice-address" disabled="@Model.Input.InvoiceUsesShippingAddress">
+                <legend class="h6">Adres do faktury</legend>
+                <div class="mb-3">
+                    <label asp-for="Input.InvoiceStreet" class="form-label"></label>
+                    <input asp-for="Input.InvoiceStreet" class="form-control" autocomplete="billing street-address" />
+                    <span asp-validation-for="Input.InvoiceStreet" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Input.InvoicePostalCode" class="form-label"></label>
+                    <input asp-for="Input.InvoicePostalCode" class="form-control" autocomplete="billing postal-code" />
+                    <span asp-validation-for="Input.InvoicePostalCode" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Input.InvoiceCity" class="form-label"></label>
+                    <input asp-for="Input.InvoiceCity" class="form-control" autocomplete="billing address-level2" />
+                    <span asp-validation-for="Input.InvoiceCity" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Input.InvoiceCountry" class="form-label"></label>
+                    <input asp-for="Input.InvoiceCountry" class="form-control" autocomplete="billing country-name" />
+                    <span asp-validation-for="Input.InvoiceCountry" class="text-danger"></span>
+                </div>
+            </fieldset>
+        </section>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Zapisz dane</button>
+</form>
+
+@section Scripts {
+    <partial name="/Views/Shared/_ValidationScriptsPartial.cshtml" />
+    <script>
+        const invoiceUsesShippingAddress = document.getElementById("Input_InvoiceUsesShippingAddress");
+        const invoiceAddress = document.getElementById("invoice-address");
+        invoiceUsesShippingAddress.addEventListener("change", () => {
+            invoiceAddress.disabled = invoiceUsesShippingAddress.checked;
+        });
+    </script>
+}
