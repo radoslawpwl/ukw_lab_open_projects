@@ -1,48 +1,96 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿.navbar {
+  padding-block: 1rem;
+}
 
-a.navbar-brand {
+.navbar.bg-white {
+  background-color: var(--shop-surface) !important;
+}
+
+.navbar .container-fluid {
+  max-width: 1240px;
+  gap: 0.75rem;
+  padding-inline: 1.25rem;
+}
+
+.navbar ::deep a.navbar-brand {
+  max-width: calc(100% - 80px);
+  margin-right: 1.5rem;
+  color: var(--shop-text);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
   white-space: normal;
-  text-align: center;
-  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
-a {
-  color: #0077cc;
+.navbar ::deep a.navbar-brand:hover, .navbar ::deep a.navbar-brand:focus {
+  color: var(--shop-accent);
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.navbar ::deep .navbar-nav {
+  gap: 0.25rem;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.navbar ::deep .nav-link.text-dark {
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  color: var(--shop-muted) !important;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
+.navbar ::deep .nav-link.text-dark:hover,
+.navbar ::deep .nav-link.text-dark:focus-visible {
+  background-color: var(--shop-surface-raised);
+  color: var(--shop-text) !important;
 }
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+
+.navbar-toggler {
+  flex-shrink: 0;
+  min-height: 44px;
+  border-color: var(--shop-border);
+  border-radius: 6px;
+}
+
+.navbar-toggler-icon {
+  filter: invert(1) grayscale(1);
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgb(108 226 188 / 20%);
+}
+
+.border-top, .border-bottom {
+  border-color: var(--shop-border) !important;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 12%);
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+  padding-block: 1.25rem;
+  background-color: var(--shop-surface);
+  white-space: normal;
+  line-height: 1.65;
+  font-size: 0.85rem;
+}
+
+.footer ::deep a {
+  color: var(--shop-accent);
+}
+
+.footer ::deep a:hover {
+  color: var(--shop-accent-hover);
+}
+
+@media (max-width: 575.98px) {
+  .navbar .navbar-collapse {
+    padding-top: 0.75rem;
+  }
+
+  .navbar ::deep .navbar-nav {
+    width: 100%;
+  }
 }
