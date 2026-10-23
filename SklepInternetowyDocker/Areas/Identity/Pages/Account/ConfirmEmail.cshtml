@@ -1,0 +1,23 @@
+@page
+@model SklepInternetowyDocker.Areas.Identity.Pages.Account.ConfirmEmailModel
+@{
+    ViewData["Title"] = "Potwierdzenie adresu e-mail";
+}
+
+<div class="row justify-content-center">
+    <section class="col-md-8 col-lg-6">
+        <p class="service-category">RP-bit / Konto klienta</p>
+        <h1 class="mb-4">Potwierdzenie adresu e-mail</h1>
+        <div class="alert @(Model.Succeeded ? "alert-success" : "alert-danger")" role="status">
+            @if (Model.Succeeded)
+            {
+                <span>Adres e-mail został potwierdzony. Możesz się zalogować.</span>
+            }
+            else
+            {
+                <span>Nie udało się potwierdzić adresu e-mail. Odnośnik jest nieprawidłowy lub wygasł.</span>
+            }
+        </div>
+        <a class="btn btn-primary" asp-page="./Login">Przejdź do logowania</a>
+    </section>
+</div>
