@@ -18,6 +18,16 @@ services:
     networks:
       - sklep_network
 
+  mailpit:
+    image: axllent/mailpit:v1.27
+    restart: unless-stopped
+    environment:
+      MP_MAX_MESSAGES: 100
+    ports:
+      - "127.0.0.1:8025:8025"
+    networks:
+      - sklep_network
+
   app:
     build:
       context: .
@@ -29,11 +39,21 @@ services:
       ConnectionStrings__DefaultConnection: >-
         Host=db;Port=5432;Database=${POSTGRES_DB};
         Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+      ContactMail__Host: ${CONTACT_SMTP_HOST:-mailpit}
+      ContactMail__Port: ${CONTACT_SMTP_PORT:-1025}
+      ContactMail__Security: ${CONTACT_SMTP_SECURITY:-None}
+      ContactMail__Username: ${CONTACT_SMTP_USERNAME:-}
+      ContactMail__Password: ${CONTACT_SMTP_PASSWORD:-}
+      ContactMail__SenderAddress: ${CONTACT_SMTP_FROM:-contact@rp-bit.com}
+      ContactMail__RecipientAddress: ${CONTACT_SMTP_TO:-contact@rp-bit.com}
+      ContactMail__TestMode: ${CONTACT_SMTP_TEST_MODE:-true}
     ports:
       - "8080:8080"
     depends_on:
       db:
         condition: service_healthy
+      mailpit:
+        condition: service_started
     networks:
       - sklep_network
 

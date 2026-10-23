@@ -4,10 +4,6 @@
     ViewData["Title"] = "Koszyk usług";
     var total = Model.Sum(item => item.Total);
     var currency = System.Globalization.CultureInfo.GetCultureInfo("pl-PL");
-    var inquiryBody = "Dzień dobry, proszę o potwierdzenie zakresu i terminu realizacji usług:\n\n"
-        + string.Join("\n", Model.Select(item => $"{item.ProductName} — {item.Quantity} pakiet(y), {item.Total.ToString("N2", currency)} zł netto"))
-        + $"\n\nSuma orientacyjna: {total.ToString("N2", currency)} zł netto.";
-    var inquiryUrl = "mailto:contact@rp-bit.com?subject=Zapytanie%20o%20uslugi%20RP-bit&body=" + Uri.EscapeDataString(inquiryBody);
 }
 
 <p class="eyebrow">RP-bit / WYBRANE PAKIETY</p>
@@ -70,7 +66,7 @@ else
     </table>
 
     <div class="service-detail-actions">
-        <a class="btn btn-primary" href="@inquiryUrl">Zapytaj o realizację</a>
+        <a class="btn btn-primary" asp-controller="Contact" asp-action="Index" asp-route-fromCart="true">Zapytaj o realizację</a>
         <a class="btn btn-outline-secondary" asp-controller="Products" asp-action="Index">Dodaj kolejną usługę</a>
         <form asp-action="Clear" method="post">
             <button class="btn btn-outline-danger" type="submit">Wyczyść koszyk</button>

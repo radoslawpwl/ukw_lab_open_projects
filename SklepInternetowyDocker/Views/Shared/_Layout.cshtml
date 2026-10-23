@@ -33,7 +33,7 @@
                             <a class="nav-link text-dark" href="https://www.rp-bit.com/" target="_blank" rel="noopener noreferrer">O RP-bit</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="mailto:contact@rp-bit.com">Kontakt</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Kontakt</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Koszyk usług</a>
@@ -57,7 +57,7 @@
                 <span>Cybersecurity &middot; Infrastructure &middot; Private AI</span>
             </div>
             <div class="footer-links">
-                <a href="mailto:contact@rp-bit.com">contact@rp-bit.com</a>
+                <a asp-area="" asp-controller="Contact" asp-action="Index">Formularz kontaktowy</a>
                 <a asp-area="" asp-controller="Home" asp-action="Privacy">Prywatność</a>
                 <span>&copy; @DateTime.UtcNow.Year RP-bit</span>
             </div>

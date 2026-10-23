@@ -33,7 +33,10 @@
                 <dt>NIP, jeżeli dotyczy</dt>
                 <dd>[DO UZUPEŁNIENIA]</dd>
                 <dt>Kontakt w sprawach danych osobowych</dt>
-                <dd><a href="mailto:contact@rp-bit.com">contact@rp-bit.com</a></dd>
+                <dd>
+                    <a asp-controller="Contact" asp-action="Index">Formularz kontaktowy</a>
+                    lub <a href="mailto:contact@rp-bit.com">contact@rp-bit.com</a>
+                </dd>
             </dl>
             <p>
                 Jeżeli został wyznaczony inspektor ochrony danych, jego dane kontaktowe należy wskazać tutaj:
@@ -59,17 +62,19 @@
                     oraz identyfikator sesji. Koszyk nie wymaga logowania i sam w sobie nie tworzy zamówienia.
                 </li>
                 <li class="mb-2">
-                    <strong>Korespondencja:</strong> adres e-mail nadawcy, treść wiadomości, załączniki
-                    i inne informacje przekazane dobrowolnie przy kontakcie w sprawie usług.
+                    <strong>Korespondencja:</strong> imię i nazwisko lub nazwa firmy, adres e-mail nadawcy,
+                    wybrany temat, treść wiadomości i inne informacje przekazane dobrowolnie przy kontakcie.
+                    Formularz nie obsługuje załączników; mogą one wystąpić w późniejszej korespondencji e-mail.
                 </li>
                 <li>
                     <strong>Dane techniczne:</strong> dane niezbędne do komunikacji z serwerem i ochrony usługi.
                     W zależności od konfiguracji serwera, hostingu lub reverse proxy logi mogą zawierać adres IP,
                     czas żądania, adres zasobu, informacje o przeglądarce i błędach. Takie informacje mogą stanowić dane osobowe.
+                    Adres IP widoczny dla aplikacji służy też do ograniczania liczby prób wysyłki formularza w pamięci serwera.
                 </li>
             </ul>
             <p>
-                Nie przesyłaj w zwykłej wiadomości e-mail haseł, kluczy API, danych szczególnych kategorii
+                Nie przesyłaj przez formularz ani w zwykłej wiadomości e-mail haseł, kluczy API, danych szczególnych kategorii
                 ani poufnych danych produkcyjnych. Sposób przekazania materiałów do audytu lub wdrożenia
                 jest uzgadniany odrębnie.
             </p>
@@ -118,16 +123,25 @@
         </section>
 
         <section aria-labelledby="inquiry-heading">
-            <h2 id="inquiry-heading" class="h4 mt-5 mb-3">4. Zapytania o usługi i kontakt e-mail</h2>
+            <h2 id="inquiry-heading" class="h4 mt-5 mb-3">4. Formularz kontaktowy i zapytania o usługi</h2>
             <p>
-                Przycisk „Zapytaj o realizację” korzysta z odnośnika <code>mailto:</code> i otwiera Twoją aplikację pocztową
-                z przygotowaną listą usług oraz orientacyjną sumą. Sklep nie wysyła takiej wiadomości automatycznie.
-                O jej wysłaniu decydujesz samodzielnie. Dane zapisane w profilu nie są automatycznie dołączane do tej wiadomości.
+                Odnośniki „Kontakt” i „Zapytaj o realizację” otwierają formularz kontaktowy.
+                Zapytanie z koszyka zawiera wstępnie przygotowaną listę usług i orientacyjną sumę;
+                zapytanie ze szczegółów usługi zawiera nazwę pakietu i orientacyjną cenę.
+                Przed wysłaniem możesz zmienić treść. Dane zapisane w profilu nie są automatycznie dołączane.
             </p>
             <p>
-                Po wysłaniu wiadomości jej obsługa odbywa się również w systemach pocztowych nadawcy i odbiorcy.
-                Dane są wykorzystywane do obsługi korespondencji i ewentualnego uzgodnienia współpracy,
-                a nie do dopisania Cię do listy marketingowej.
+                Po użyciu przycisku „Wyślij wiadomość” aplikacja przekazuje podane dane do skonfigurowanego
+                serwera pocztowego SMTP, a następnie na skrzynkę kontaktową administratora.
+                Twój adres jest ustawiany jako adres do odpowiedzi. Nie wysyłamy automatycznej kopii do Ciebie.
+                Treść formularza nie jest zapisywana w tabelach bazy danych sklepu;
+                wiadomości mogą być przechowywane w systemach pocztowych i ich kopiach zapasowych.
+                Dane służą obsłudze zapytania i ewentualnemu uzgodnieniu współpracy, nie zapisowi na marketing.
+            </p>
+            <p>
+                W lokalnym trybie testowym wiadomości są przechwytywane przez Mailpit zamiast trafiać
+                na rzeczywistą pocztę RP-bit. Tryb ten jest oznaczony w formularzu i potwierdzeniu.
+                W testach należy używać danych fikcyjnych, a nie rzeczywistych danych klientów.
             </p>
         </section>
 
@@ -198,6 +212,8 @@
                 <li class="mb-2">
                     <strong>Korespondencja i zapytania bez zawartej umowy:</strong>
                     [DO UZUPEŁNIENIA: konkretny okres lub precyzyjne kryterium usuwania po zakończeniu sprawy].
+                    Lokalna skrzynka testowa Mailpit przechowuje maksymalnie 100 najnowszych wiadomości;
+                    jej dane nie mają trwałego wolumenu i znikają po odtworzeniu kontenera.
                 </li>
                 <li class="mb-2">
                     <strong>Dokumentacja wykonanych usług i roszczeń:</strong> przez czas niezbędny do realizacji umowy,
@@ -240,7 +256,8 @@
                 Funkcje konta nie zastępują możliwości złożenia żądania dotyczącego innych danych, np. korespondencji.
             </p>
             <p>
-                Żądania można wysyłać na <a href="mailto:contact@rp-bit.com">contact@rp-bit.com</a>.
+                Żądania można przekazać przez <a asp-controller="Contact" asp-action="Index">formularz kontaktowy</a>
+                lub na <a href="mailto:contact@rp-bit.com">contact@rp-bit.com</a>.
                 W razie uzasadnionych wątpliwości możemy poprosić o informacje niezbędne do potwierdzenia tożsamości,
                 bez zbierania danych ponad potrzebę. Odpowiadamy bez zbędnej zwłoki, co do zasady w ciągu miesiąca.
                 Przy skomplikowanych lub licznych żądaniach termin może zostać przedłużony o dwa kolejne miesiące;

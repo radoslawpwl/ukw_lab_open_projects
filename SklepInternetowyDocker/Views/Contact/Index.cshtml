@@ -1,0 +1,72 @@
+@model SklepInternetowyDocker.Models.ContactViewModel
+
+@{
+    ViewData["Title"] = "Kontakt";
+    var canSend = ViewData["CanSend"] is true;
+}
+
+<p class="service-category">RP-bit / Kontakt</p>
+<h1 class="mb-4">Porozmawiajmy o projekcie</h1>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        @if (!canSend)
+        {
+            <div class="alert alert-warning" role="alert">
+                Formularz jest tymczasowo niedostępny. Administrator musi skonfigurować serwer pocztowy.
+            </div>
+        }
+        else if (ViewData["IsTestDelivery"] is true)
+        {
+            <div class="alert alert-warning" role="status">
+                Tryb testowy: wiadomości trafiają do lokalnej skrzynki Mailpit, a nie na prawdziwą pocztę RP-bit.
+            </div>
+        }
+
+        <form asp-controller="Contact" asp-action="Index" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control" autocomplete="name" maxlength="150" required />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" type="email" class="form-control" autocomplete="email" maxlength="254" required />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <label asp-for="Topic" class="form-label"></label>
+                    <select asp-for="Topic" asp-items="Html.GetEnumSelectList<SklepInternetowyDocker.Models.ContactTopic>()"
+                            class="form-select" required>
+                        <option value="">Wybierz temat</option>
+                    </select>
+                    <span asp-validation-for="Topic" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <label asp-for="Message" class="form-label"></label>
+                    <textarea asp-for="Message" class="form-control" rows="9" minlength="10" maxlength="10000" required></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <p class="small text-muted">
+                        Dane posłużą do obsługi zapytania i kontaktu zwrotnego.
+                        <a asp-controller="Home" asp-action="Privacy">Polityka prywatności</a>.
+                        Wysłanie zapytania nie stanowi złożenia zamówienia ani zgody na marketing.
+                    </p>
+                    <button type="submit" class="btn btn-primary" disabled="@(!canSend)">Wyślij wiadomość</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <aside class="col-lg-4">
+        <h2 class="h4">RP-bit</h2>
+        <p>Audyty bezpieczeństwa, testy aplikacji i API, wydajność, infrastruktura Linux oraz prywatne rozwiązania AI.</p>
+        <a asp-controller="Products" asp-action="Index">Zobacz zakres usług</a>
+    </aside>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

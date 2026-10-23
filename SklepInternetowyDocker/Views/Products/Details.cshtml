@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = Model.Name;
     var currency = System.Globalization.CultureInfo.GetCultureInfo("pl-PL");
-    var inquiryUrl = "mailto:contact@rp-bit.com?subject=" + Uri.EscapeDataString("RP-bit: " + Model.Name);
 }
 
 <a class="d-inline-block mb-4" asp-action="Index">Wszystkie usługi</a>
@@ -26,7 +25,7 @@
         <input type="hidden" name="productId" value="@Model.Id" />
         <button class="btn btn-primary" type="submit">Dodaj usługę do koszyka</button>
     </form>
-    <a class="btn btn-outline-secondary" href="@inquiryUrl">Zapytaj o zakres i termin</a>
+    <a class="btn btn-outline-secondary" asp-controller="Contact" asp-action="Index" asp-route-productId="@Model.Id">Zapytaj o zakres i termin</a>
 </div>
 
 <aside class="pricing-note">
