@@ -1,0 +1,27 @@
+@page
+@model Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Manage.Internal.EmailModel
+@{
+    ViewData["Title"] = "Adres e-mail";
+    ViewData["ActivePage"] = "Email";
+}
+<h2 class="h3 mb-4">@T["Adres e-mail"]</h2>
+<partial name="_StatusMessage" for="StatusMessage" />
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+    <div class="mb-3">
+        <label for="current-email" class="form-label">@T["Obecny adres e-mail"]</label>
+        <input id="current-email" class="form-control" value="@Model.Email" disabled />
+        <p class="form-text">@T[Model.IsEmailConfirmed ? "Adres potwierdzony" : "Adres niepotwierdzony"]</p>
+    </div>
+    @if (!Model.IsEmailConfirmed)
+    {
+        <button class="btn btn-outline-secondary mb-3" asp-page-handler="SendVerificationEmail" type="submit">@T["Wyślij ponownie potwierdzenie adresu e-mail"]</button>
+    }
+    <div class="mb-3">
+        <label asp-for="Input.NewEmail" class="form-label">@T["Nowy adres e-mail"]</label>
+        <input asp-for="Input.NewEmail" class="form-control" autocomplete="email" />
+        <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
+    </div>
+    <button class="btn btn-primary" asp-page-handler="ChangeEmail" type="submit">@T["Zmień adres e-mail"]</button>
+</form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

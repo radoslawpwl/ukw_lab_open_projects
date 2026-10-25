@@ -1,0 +1,12 @@
+@page
+@model Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Manage.Internal.GenerateRecoveryCodesModel
+@{
+    ViewData["Title"] = "Wygeneruj kody odzyskiwania";
+    ViewData["ActivePage"] = "TwoFactorAuthentication";
+}
+<h2 class="h3">@T["Wygeneruj kody odzyskiwania"]</h2>
+<div class="alert alert-warning">@T["Nowe kody zastąpią poprzednie. Przechowuj je bezpiecznie poza tą aplikacją."]</div>
+<form method="post">
+    <button class="btn btn-primary" type="submit">@T["Wygeneruj kody odzyskiwania"]</button>
+    <a class="btn btn-outline-secondary" asp-page="TwoFactorAuthentication">@T["Anuluj"]</a>
+</form>

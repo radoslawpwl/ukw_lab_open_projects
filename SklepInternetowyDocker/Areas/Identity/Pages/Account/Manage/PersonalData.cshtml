@@ -1,0 +1,13 @@
+@page
+@model Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Manage.Internal.PersonalDataModel
+@{
+    ViewData["Title"] = "Dane osobowe";
+    ViewData["ActivePage"] = "PersonalData";
+}
+<h2 class="h3 mb-4">@T["Dane osobowe"]</h2>
+<p>@T["Możesz pobrać dane zapisane na koncie lub usunąć konto."]</p>
+<div class="alert alert-warning">@T["Usunięcie konta jest nieodwracalne. Inna dokumentacja może podlegać odrębnym zasadom retencji."]</div>
+<form asp-page="DownloadPersonalData" method="post" class="mb-3">
+    <button type="submit" class="btn btn-primary">@T["Pobierz dane"]</button>
+</form>
+<a asp-page="DeletePersonalData" class="btn btn-outline-danger">@T["Usuń konto"]</a>

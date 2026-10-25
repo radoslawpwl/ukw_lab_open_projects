@@ -24,7 +24,8 @@ builder.Services.AddControllersWithViews()
     .AddViewLocalization()
     .AddDataAnnotationsLocalization(options =>
         options.DataAnnotationLocalizerProvider = (_, factory) =>
-            factory.Create(typeof(SklepInternetowyDocker.SharedResource)));
+            factory.Create(typeof(SklepInternetowyDocker.SharedResource)))
+    .AddMvcOptions(options => options.Filters.Add<LocalizedPageMessagesFilter>());
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
     var cultures = new[] { new CultureInfo("pl-PL"), new CultureInfo("en-GB") };

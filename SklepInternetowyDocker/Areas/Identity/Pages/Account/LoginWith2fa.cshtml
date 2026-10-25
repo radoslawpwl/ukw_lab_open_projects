@@ -1,0 +1,19 @@
+@page
+@model Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginWith2faModel
+@{ ViewData["Title"] = "Uwierzytelnianie dwuskładnikowe"; }
+<h1 class="h3">@T["Uwierzytelnianie dwuskładnikowe"]</h1>
+<form method="post" class="col-lg-6">
+    <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+    <div class="mb-3">
+        <label asp-for="Input.TwoFactorCode" class="form-label">@T["Kod uwierzytelniania"]</label>
+        <input asp-for="Input.TwoFactorCode" class="form-control" autocomplete="one-time-code" inputmode="numeric" />
+        <span asp-validation-for="Input.TwoFactorCode" class="text-danger"></span>
+    </div>
+    <div class="form-check mb-3">
+        <input asp-for="Input.RememberMachine" class="form-check-input" />
+        <label asp-for="Input.RememberMachine" class="form-check-label">@T["Zapamiętaj tę przeglądarkę"]</label>
+    </div>
+    <button type="submit" class="btn btn-primary">@T["Zaloguj się"]</button>
+</form>
+<a class="d-inline-block mt-3" asp-page="LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">@T["Użyj kodu odzyskiwania"]</a>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

@@ -1,0 +1,15 @@
+@page
+@model Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Manage.Internal.ShowRecoveryCodesModel
+@{
+    ViewData["Title"] = "Kody odzyskiwania";
+    ViewData["ActivePage"] = "TwoFactorAuthentication";
+}
+<h2 class="h3">@T["Kody odzyskiwania"]</h2>
+<div class="alert alert-warning">@T["Zapisz kody w bezpiecznym miejscu. Każdy kod może być użyty tylko raz."]</div>
+<ul class="list-unstyled">
+    @foreach (var code in Model.RecoveryCodes)
+    {
+        <li><code>@code</code></li>
+    }
+</ul>
+<a class="btn btn-outline-secondary" asp-page="TwoFactorAuthentication">@T["Moje konto"]</a>

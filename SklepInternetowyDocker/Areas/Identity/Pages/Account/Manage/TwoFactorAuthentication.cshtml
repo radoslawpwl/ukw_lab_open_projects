@@ -1,0 +1,28 @@
+@page
+@model Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Manage.Internal.TwoFactorAuthenticationModel
+@{
+    ViewData["Title"] = "Uwierzytelnianie dwuskładnikowe";
+    ViewData["ActivePage"] = "TwoFactorAuthentication";
+}
+<h2 class="h3 mb-4">@T["Uwierzytelnianie dwuskładnikowe"]</h2>
+<partial name="_StatusMessage" for="StatusMessage" />
+<p>@T[Model.Is2faEnabled ? "Uwierzytelnianie dwuskładnikowe jest włączone." : "Uwierzytelnianie dwuskładnikowe jest wyłączone."]</p>
+@if (Model.Is2faEnabled)
+{
+    <p>@T["Pozostałe kody odzyskiwania: {0}", Model.RecoveryCodesLeft]</p>
+    <div class="d-flex flex-wrap gap-2 mb-3">
+        <a class="btn btn-outline-danger" asp-page="Disable2fa">@T["Wyłącz 2FA"]</a>
+        <a class="btn btn-outline-secondary" asp-page="GenerateRecoveryCodes">@T["Wygeneruj kody odzyskiwania"]</a>
+    </div>
+    @if (Model.IsMachineRemembered)
+    {
+        <form method="post" class="mb-3">
+            <button class="btn btn-outline-secondary" type="submit">@T["Zapomnij tę przeglądarkę"]</button>
+        </form>
+    }
+}
+<a class="btn btn-primary" asp-page="EnableAuthenticator">@T[Model.HasAuthenticator ? "Skonfiguruj aplikację uwierzytelniającą" : "Dodaj aplikację uwierzytelniającą"]</a>
+@if (Model.HasAuthenticator)
+{
+    <a class="btn btn-outline-danger" asp-page="ResetAuthenticator">@T["Zresetuj klucz uwierzytelniania"]</a>
+}

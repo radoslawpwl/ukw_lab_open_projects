@@ -1,0 +1,12 @@
+@page
+@model Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Manage.Internal.ResetAuthenticatorModel
+@{
+    ViewData["Title"] = "Zresetuj klucz uwierzytelniania";
+    ViewData["ActivePage"] = "TwoFactorAuthentication";
+}
+<h2 class="h3">@T["Zresetuj klucz uwierzytelniania"]</h2>
+<div class="alert alert-warning">@T["Dotychczasowy klucz przestanie działać. Konieczne będzie ponowne skonfigurowanie aplikacji uwierzytelniającej."]</div>
+<form method="post">
+    <button class="btn btn-danger" type="submit">@T["Zresetuj klucz uwierzytelniania"]</button>
+    <a class="btn btn-outline-secondary" asp-page="TwoFactorAuthentication">@T["Anuluj"]</a>
+</form>

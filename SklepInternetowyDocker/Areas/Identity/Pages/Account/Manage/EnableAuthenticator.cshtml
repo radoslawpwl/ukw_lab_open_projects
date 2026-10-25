@@ -1,0 +1,20 @@
+@page
+@model Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Manage.Internal.EnableAuthenticatorModel
+@{
+    ViewData["Title"] = "Dodaj aplikację uwierzytelniającą";
+    ViewData["ActivePage"] = "TwoFactorAuthentication";
+}
+<h2 class="h3">@T["Dodaj aplikację uwierzytelniającą"]</h2>
+<partial name="_StatusMessage" for="StatusMessage" />
+<p>@T["Dodaj konto w aplikacji uwierzytelniającej, używając klucza konfiguracji, a następnie wpisz wygenerowany kod."]</p>
+<p><strong>@T["Klucz konfiguracji"]:</strong> <code>@Model.SharedKey</code></p>
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+    <div class="mb-3">
+        <label asp-for="Input.Code" class="form-label">@T["Kod uwierzytelniania"]</label>
+        <input asp-for="Input.Code" class="form-control" autocomplete="one-time-code" inputmode="numeric" />
+        <span asp-validation-for="Input.Code" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">@T["Potwierdź"]</button>
+</form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

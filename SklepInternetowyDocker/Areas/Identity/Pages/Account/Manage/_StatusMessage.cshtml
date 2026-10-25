@@ -1,0 +1,5 @@
+@model string
+@if (!string.IsNullOrEmpty(Model))
+{
+    <div class="alert @(Model.StartsWith("Error", StringComparison.OrdinalIgnoreCase) ? "alert-danger" : "alert-success")" role="status">@T[Model]</div>
+}

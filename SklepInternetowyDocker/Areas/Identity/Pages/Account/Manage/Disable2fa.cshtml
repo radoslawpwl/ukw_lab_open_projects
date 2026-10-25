@@ -1,0 +1,12 @@
+@page
+@model Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Manage.Internal.Disable2faModel
+@{
+    ViewData["Title"] = "Wyłącz 2FA";
+    ViewData["ActivePage"] = "TwoFactorAuthentication";
+}
+<h2 class="h3">@T["Wyłącz 2FA"]</h2>
+<div class="alert alert-warning">@T["Po wyłączeniu 2FA logowanie nie będzie wymagać dodatkowego kodu."]</div>
+<form method="post">
+    <button class="btn btn-danger" type="submit">@T["Wyłącz 2FA"]</button>
+    <a class="btn btn-outline-secondary" asp-page="TwoFactorAuthentication">@T["Anuluj"]</a>
+</form>

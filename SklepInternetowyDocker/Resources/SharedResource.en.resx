@@ -177,4 +177,70 @@
   <data name="Błąd" xml:space="preserve"><value>Error</value></data>
   <data name="Nie udało się przetworzyć żądania. Spróbuj ponownie później." xml:space="preserve"><value>We could not process your request. Please try again later.</value></data>
   <data name="Identyfikator żądania" xml:space="preserve"><value>Request ID</value></data>
+  <data name="Obecny adres e-mail" xml:space="preserve"><value>Current email address</value></data>
+  <data name="Nowy adres e-mail" xml:space="preserve"><value>New email address</value></data>
+  <data name="Adres potwierdzony" xml:space="preserve"><value>Email confirmed</value></data>
+  <data name="Adres niepotwierdzony" xml:space="preserve"><value>Email not confirmed</value></data>
+  <data name="Zmień adres e-mail" xml:space="preserve"><value>Change email address</value></data>
+  <data name="Zmień hasło" xml:space="preserve"><value>Change password</value></data>
+  <data name="Obecne hasło" xml:space="preserve"><value>Current password</value></data>
+  <data name="Nowe hasło" xml:space="preserve"><value>New password</value></data>
+  <data name="Możesz pobrać dane zapisane na koncie lub usunąć konto." xml:space="preserve"><value>You can download your account data or delete your account.</value></data>
+  <data name="Usunięcie konta jest nieodwracalne. Inna dokumentacja może podlegać odrębnym zasadom retencji." xml:space="preserve"><value>Deleting your account is irreversible. Other records may be subject to separate retention requirements.</value></data>
+  <data name="Pobierz dane" xml:space="preserve"><value>Download data</value></data>
+  <data name="Usuń konto" xml:space="preserve"><value>Delete account</value></data>
+  <data name="Ta operacja trwale usuwa konto i nie może zostać cofnięta." xml:space="preserve"><value>This permanently deletes your account and cannot be undone.</value></data>
+  <data name="Anuluj" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Uwierzytelnianie dwuskładnikowe jest włączone." xml:space="preserve"><value>Two-factor authentication is enabled.</value></data>
+  <data name="Uwierzytelnianie dwuskładnikowe jest wyłączone." xml:space="preserve"><value>Two-factor authentication is disabled.</value></data>
+  <data name="Pozostałe kody odzyskiwania: {0}" xml:space="preserve"><value>Recovery codes remaining: {0}</value></data>
+  <data name="Wyłącz 2FA" xml:space="preserve"><value>Disable 2FA</value></data>
+  <data name="Wygeneruj kody odzyskiwania" xml:space="preserve"><value>Generate recovery codes</value></data>
+  <data name="Zapomnij tę przeglądarkę" xml:space="preserve"><value>Forget this browser</value></data>
+  <data name="Skonfiguruj aplikację uwierzytelniającą" xml:space="preserve"><value>Configure authenticator app</value></data>
+  <data name="Dodaj aplikację uwierzytelniającą" xml:space="preserve"><value>Add authenticator app</value></data>
+  <data name="Zresetuj klucz uwierzytelniania" xml:space="preserve"><value>Reset authenticator key</value></data>
+  <data name="Odzyskiwanie hasła" xml:space="preserve"><value>Password recovery</value></data>
+  <data name="Wyślij link do zmiany hasła" xml:space="preserve"><value>Send password reset link</value></data>
+  <data name="Jeśli konto istnieje i spełnia wymagania, otrzymasz wiadomość z linkiem do zmiany hasła." xml:space="preserve"><value>If an eligible account exists, you will receive a password reset email.</value></data>
+  <data name="Ustaw nowe hasło" xml:space="preserve"><value>Set a new password</value></data>
+  <data name="Hasło zostało zmienione" xml:space="preserve"><value>Your password has been changed</value></data>
+  <data name="Wyślij potwierdzenie" xml:space="preserve"><value>Send confirmation</value></data>
+  <data name="Kod uwierzytelniania" xml:space="preserve"><value>Authenticator code</value></data>
+  <data name="Zapamiętaj tę przeglądarkę" xml:space="preserve"><value>Remember this browser</value></data>
+  <data name="Użyj kodu odzyskiwania" xml:space="preserve"><value>Use a recovery code</value></data>
+  <data name="Kod odzyskiwania" xml:space="preserve"><value>Recovery code</value></data>
+  <data name="Konto jest zablokowane" xml:space="preserve"><value>Account locked</value></data>
+  <data name="Dodaj konto w aplikacji uwierzytelniającej, używając klucza konfiguracji, a następnie wpisz wygenerowany kod." xml:space="preserve"><value>Add an account in your authenticator app using the setup key, then enter the generated code.</value></data>
+  <data name="Klucz konfiguracji" xml:space="preserve"><value>Setup key</value></data>
+  <data name="Potwierdź" xml:space="preserve"><value>Confirm</value></data>
+  <data name="Po wyłączeniu 2FA logowanie nie będzie wymagać dodatkowego kodu." xml:space="preserve"><value>After disabling 2FA, sign-in will no longer require an additional code.</value></data>
+  <data name="Dotychczasowy klucz przestanie działać. Konieczne będzie ponowne skonfigurowanie aplikacji uwierzytelniającej." xml:space="preserve"><value>The old key will stop working. You will need to set up your authenticator app again.</value></data>
+  <data name="Nowe kody zastąpią poprzednie. Przechowuj je bezpiecznie poza tą aplikacją." xml:space="preserve"><value>New codes replace the previous ones. Store them securely outside this application.</value></data>
+  <data name="Kody odzyskiwania" xml:space="preserve"><value>Recovery codes</value></data>
+  <data name="Zapisz kody w bezpiecznym miejscu. Każdy kod może być użyty tylko raz." xml:space="preserve"><value>Save these codes securely. Each code can only be used once.</value></data>
+  <data name="Current password"><value>Current password</value></data>
+  <data name="New password"><value>New password</value></data>
+  <data name="Confirm new password"><value>Confirm new password</value></data>
+  <data name="Confirm password"><value>Confirm password</value></data>
+  <data name="Password"><value>Password</value></data>
+  <data name="Email"><value>Email</value></data>
+  <data name="New email"><value>New email</value></data>
+  <data name="Verification Code"><value>Verification code</value></data>
+  <data name="Authenticator code"><value>Authenticator code</value></data>
+  <data name="Recovery Code"><value>Recovery code</value></data>
+  <data name="The {0} must be at least {2} and at max {1} characters long."><value>The {0} must be between {2} and {1} characters long.</value></data>
+  <data name="The password and confirmation password do not match."><value>The password and confirmation password do not match.</value></data>
+  <data name="The new password and confirmation password do not match."><value>The new password and confirmation password do not match.</value></data>
+  <data name="Invalid authenticator code."><value>Invalid authenticator code.</value></data>
+  <data name="Invalid recovery code entered."><value>Invalid recovery code entered.</value></data>
+  <data name="Verification code is invalid."><value>Verification code is invalid.</value></data>
+  <data name="Incorrect password."><value>Incorrect password.</value></data>
+  <data name="Your password has been changed."><value>Your password has been changed.</value></data>
+  <data name="Your email is unchanged."><value>Your email is unchanged.</value></data>
+  <data name="Confirmation link to change email sent. Please check your email."><value>Confirmation link to change email sent. Please check your email.</value></data>
+  <data name="Verification email sent. Please check your email."><value>Verification email sent. Please check your email.</value></data>
+  <data name="Your authenticator app has been verified."><value>Your authenticator app has been verified.</value></data>
+  <data name="Your authenticator app key has been reset, you will need to configure your authenticator app using the new key."><value>Your authenticator app key has been reset. Configure your app using the new key.</value></data>
+  <data name="The current browser has been forgotten. When you login again from this browser you will be prompted for your 2fa code."><value>This browser has been forgotten. Your next sign-in will require a 2FA code.</value></data>
 </root>

@@ -1,0 +1,22 @@
+@page
+@model Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Manage.Internal.DeletePersonalDataModel
+@{
+    ViewData["Title"] = "Usuń konto";
+    ViewData["ActivePage"] = "PersonalData";
+}
+<h2 class="h3 mb-4">@T["Usuń konto"]</h2>
+<div class="alert alert-danger">@T["Ta operacja trwale usuwa konto i nie może zostać cofnięta."]</div>
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+    @if (Model.RequirePassword)
+    {
+        <div class="mb-3">
+            <label asp-for="Input.Password" class="form-label">@T["Hasło"]</label>
+            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+    }
+    <button type="submit" class="btn btn-danger">@T["Usuń konto"]</button>
+    <a asp-page="PersonalData" class="btn btn-outline-secondary">@T["Anuluj"]</a>
+</form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

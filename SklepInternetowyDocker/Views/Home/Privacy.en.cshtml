@@ -1,0 +1,207 @@
+@{
+    ViewData["Title"] = "Polityka prywatności";
+}
+
+<div class="row justify-content-center">
+    <article class="col-lg-10 col-xl-9" aria-labelledby="privacy-heading">
+        <header class="mb-4">
+            <p class="eyebrow">RP-bit / PRIVACY AND PERSONAL DATA</p>
+            <h1 id="privacy-heading">Privacy policy</h1>
+            <p class="text-muted">Version dated <time datetime="2026-10-25">25 October 2026</time></p>
+            <p>This policy explains how personal data is processed in the RP-bit service store.
+                Linked external websites may have separate privacy policies.</p>
+        </header>
+
+        <aside class="alert alert-warning" aria-label="Document status">
+            <strong>Draft, not ready for publication as a final policy.</strong>
+            Items marked TO BE COMPLETED must be confirmed by the controller before production use.
+            Review the actual providers, retention, international transfers and security configuration.
+            This document does not replace individual legal advice. Both language versions are drafts.
+        </aside>
+
+        <section aria-labelledby="administrator-heading">
+            <h2 id="administrator-heading" class="h4 mt-5 mb-3">1. Controller and contact</h2>
+            <dl>
+                <dt>Full legal name of the business or individual operating RP-bit</dt>
+                <dd>[TO BE COMPLETED: the brand name alone does not identify the controller]</dd>
+                <dt>Registered or correspondence address</dt>
+                <dd>[TO BE COMPLETED: street, number, postal code, city and country]</dd>
+                <dt>Tax identification number, if applicable</dt>
+                <dd>[TO BE COMPLETED]</dd>
+                <dt>Personal data enquiries</dt>
+                <dd><a asp-controller="Contact" asp-action="Index">Contact form</a> or
+                    <a href="mailto:contact@rp-bit.com">contact@rp-bit.com</a></dd>
+            </dl>
+            <p>Data protection officer's contact details, if appointed: [TO BE COMPLETED, if applicable].</p>
+        </section>
+
+        <section aria-labelledby="data-heading">
+            <h2 id="data-heading" class="h4 mt-5 mb-3">2. Data we process</h2>
+            <ul>
+                <li><strong>Account:</strong> email address, username, password hash, confirmation
+                    status and authentication/security settings. Passwords are not stored as plaintext.</li>
+                <li><strong>Profile:</strong> optional phone number, recipient, shipping address,
+                    billing name, tax number and billing address. These fields are not required
+                    to browse the catalogue or create an account.</li>
+                <li><strong>Basket:</strong> selected service identifiers, names, prices, quantities
+                    and a session identifier. A basket does not require sign-in and does not create an order.</li>
+                <li><strong>Correspondence:</strong> name or company, reply email, topic, message
+                    and other information you provide. The form accepts no attachments; later email correspondence may.</li>
+                <li><strong>Technical data:</strong> depending on hosting/proxy configuration,
+                    logs may include IP addresses, timestamps, requested resources, browser information
+                    and errors. The IP address visible to the application is also used for in-memory contact rate limiting.</li>
+            </ul>
+            <p>Do not send passwords, API keys, special-category data or confidential production
+                materials through this form or ordinary email. Agree on a suitable transfer method separately.</p>
+        </section>
+
+        <section aria-labelledby="purposes-heading">
+            <h2 id="purposes-heading" class="h4 mt-5 mb-3">3. Purposes and legal bases</h2>
+            <p>Under Article 6(1) of Regulation (EU) 2016/679 (GDPR):</p>
+            <ul>
+                <li><strong>Account and profile:</strong> performance of the account agreement,
+                    Article 6(1)(b). Creating an account is not marketing consent.</li>
+                <li><strong>Enquiries and quotations:</strong> steps at your request before a contract,
+                    Article 6(1)(b). Business-representative or other correspondence may rely on the
+                    legitimate interest in communication, Article 6(1)(f).</li>
+                <li><strong>Separately agreed services:</strong> contract performance, Article 6(1)(b).
+                    Parties' roles, access and any required processing agreement are agreed before work starts.</li>
+                <li><strong>Tax and accounting duties:</strong> legal obligations, Article 6(1)(c), where applicable.</li>
+                <li><strong>Security, abuse prevention and legal claims:</strong> legitimate interests,
+                    Article 6(1)(f), taking your rights and reasonable expectations into account.</li>
+            </ul>
+            <p>Email and password are needed for an account; contact details are needed for a reply.
+                Provide other data only where necessary. Billing details may be required when a service is invoiced.</p>
+            <p>The application currently has no newsletter, comments, waiting list, online payments
+                or automatic invoicing. A basket or saved billing details do not constitute a contract, payment or invoice.</p>
+        </section>
+
+        <section aria-labelledby="inquiry-heading">
+            <h2 id="inquiry-heading" class="h4 mt-5 mb-3">4. Contact form and enquiries</h2>
+            <p>Enquiries from the basket include a draft list and estimated total; a service-page
+                enquiry includes its name and indicative price. You may edit the message.
+                Profile details are not automatically attached.</p>
+            <p>The form sends data through the configured SMTP server to the controller's inbox.
+                Your email is used as Reply-To, not as the sender. No automatic copy is sent to you.
+                Messages are not saved in the store's database, but may be retained in mail systems and backups.
+                An enquiry is not marketing registration.</p>
+            <p>In local test mode Mailpit intercepts messages instead of sending them to the real
+                RP-bit mailbox. The form and confirmation identify this mode. Use fictional data only.</p>
+        </section>
+
+        <section aria-labelledby="recipients-heading">
+            <h2 id="recipients-heading" class="h4 mt-5 mb-3">5. Recipients and providers</h2>
+            <p>Authorised persons and providers may access data only as needed. Required processing
+                arrangements must be in place where a provider acts as a processor.</p>
+            <ul>
+                <li>Application, database and backup hosting: [TO BE COMPLETED: actual provider,
+                    processing locations and subprocessors, or details of own infrastructure].</li>
+                <li>Email: [TO BE COMPLETED: provider and processing locations].</li>
+                <li>Accounting/legal support, if used: [TO BE COMPLETED: actual entities or relevant categories].</li>
+                <li>Public authorities: only as required or permitted by law.</li>
+            </ul>
+            <p>We do not sell users' personal data.</p>
+        </section>
+
+        <section aria-labelledby="external-heading">
+            <h2 id="external-heading" class="h4 mt-5 mb-3">6. External resources and international transfers</h2>
+            <p>The logo and service images are hosted with the application. Manrope is loaded from
+                Google Fonts at <code>fonts.googleapis.com</code> and <code>fonts.gstatic.com</code>.
+                These requests may disclose your IP address, browser information and referring website
+                to Google. They are not an integration with Google Analytics or advertising consent.</p>
+            <p>Provider information:
+                <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener noreferrer">Google Fonts privacy FAQ</a>
+                and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google privacy policy</a>.
+                These links do not replace the controller's assessment.</p>
+            <p>[TO BE COMPLETED BEFORE PUBLICATION: actual recipient countries, any transfers outside
+                the EEA, their legal basis under GDPR Chapter V, safeguards and how to obtain a copy].
+                A provider's statement alone does not settle these obligations.</p>
+        </section>
+
+        <section aria-labelledby="retention-heading">
+            <h2 id="retention-heading" class="h4 mt-5 mb-3">7. Retention</h2>
+            <ul>
+                <li>Account/profile: for the account's lifetime. Deletion does not automatically erase
+                    correspondence or records retained on another legal basis.</li>
+                <li>Basket: session data expires after 30 minutes of inactivity; in-memory data may also be lost on restart.</li>
+                <li>Uncontracted enquiries: [TO BE COMPLETED: a specific period or precise deletion criterion].
+                    Local Mailpit retains up to 100 recent messages and has no persistent mail volume.</li>
+                <li>Service records/claims: for performance and the applicable limitation or mandatory retention period.</li>
+                <li>Tax records: generally five years from the end of the calendar year in which the
+                    payment deadline expired, subject to specific rules and suspension/interruption.
+                    This is not automatically five years from the invoice date.</li>
+                <li>Logs/backups: [TO BE COMPLETED: actual retention, overwrite cycle and deletion rules].</li>
+            </ul>
+            <p>Data must not be retained indefinitely just in case. When the purpose or legal basis
+                ends, delete or effectively anonymise it, subject to legal duties and backup rules.</p>
+        </section>
+
+        <section aria-labelledby="rights-heading">
+            <h2 id="rights-heading" class="h4 mt-5 mb-3">8. Your rights</h2>
+            <p>Subject to the GDPR's conditions and limits, you may request access/a copy, rectification,
+                erasure, restriction and portability for eligible automated processing based on consent
+                or contract. You may object to legitimate-interest processing on grounds relating to
+                your situation, and unconditionally to direct marketing if it is introduced. Where
+                processing relies on consent, you may withdraw it without affecting earlier lawful processing.</p>
+            <p>Edit your profile in <a asp-area="Identity" asp-page="/Account/Manage/Index">account settings</a>.
+                Signed-in users can download their data or delete their account under
+                <a asp-area="Identity" asp-page="/Account/Manage/PersonalData">personal data</a>.
+                These tools do not replace requests concerning other data, such as correspondence.</p>
+            <p>Use the <a asp-controller="Contact" asp-action="Index">contact form</a> or
+                <a href="mailto:contact@rp-bit.com">contact@rp-bit.com</a>. Where reasonably necessary
+                we may request proportionate identity verification. We respond without undue delay,
+                generally within one month. Complex or numerous requests may require two further months;
+                we explain the extension within the first month.</p>
+            <p>Erasure is not absolute. Any refusal or limitation requires a legal basis, such as
+                mandatory retention or establishing, exercising or defending legal claims.</p>
+        </section>
+
+        <section aria-labelledby="cookies-heading">
+            <h2 id="cookies-heading" class="h4 mt-5 mb-3">9. Cookies</h2>
+            <p>Technical cookies support authentication, basket sessions, CSRF protection, language
+                preference and short-lived status messages. The basket is stored server-side;
+                its cookie contains a session identifier.</p>
+            <div class="table-responsive">
+                <table class="table">
+                    <caption class="text-muted">Standard ASP.NET Core cookies; some names have variable suffixes.</caption>
+                    <thead><tr><th scope="col">Cookie</th><th scope="col">Purpose</th><th scope="col">Lifetime</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>.AspNetCore.Identity.Application</code></td><td>Signed-in session.</td><td>Browser session; persistent sign-in defaults to 14 days, potentially renewed with activity.</td></tr>
+                        <tr><td><code>.AspNetCore.Session</code></td><td>Server-side basket association.</td><td>Session cookie; basket data expires after 30 minutes of inactivity independently.</td></tr>
+                        <tr><td><code>.AspNetCore.Antiforgery.*</code></td><td>Cross-site request protection.</td><td>Usually the browser session.</td></tr>
+                        <tr><td><code>.AspNetCore.Culture</code></td><td>PL/EN preference.</td><td>Up to one year after the last language change or until deleted.</td></tr>
+                        <tr><td><code>.AspNetCore.Mvc.CookieTempDataProvider</code></td><td>Short-lived operation messages.</td><td>Until read or session end, depending on usage.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Strictly necessary cookies for a requested service generally do not require optional-cookie
+                consent. Visiting, scrolling or closing a notice is not advertising/analytics consent.</p>
+            <p>The application currently has no Google Analytics, Google Ads or Meta Pixel. Any future
+                optional analytics/advertising requires a legal assessment, updated information and,
+                where required, prior consent and a way to withdraw it before those mechanisms operate.</p>
+            <p>Manage cookies in your browser. Blocking technical cookies may prevent sign-in, form
+                submission or basket persistence. Deleting cookies does not delete your account or stored data.</p>
+        </section>
+
+        <section aria-labelledby="security-heading">
+            <h2 id="security-heading" class="h4 mt-5 mb-3">10. Security and automated decisions</h2>
+            <p>The application uses authentication, access control, password hashing and CSRF protection.
+                Infrastructure and administrative access controls must match the actual deployment.
+                No system guarantees elimination of all risk.</p>
+            <p>The current application makes no solely automated decisions producing legal or similarly
+                significant effects, and performs no advertising profiling. Listing AI services does
+                not automatically transfer account data to AI models.</p>
+        </section>
+
+        <section aria-labelledby="complaints-heading">
+            <h2 id="complaints-heading" class="h4 mt-5 mb-3">11. Complaints and changes</h2>
+            <p>You may complain to the President of the Polish Personal Data Protection Office
+                (UODO) if you believe processing infringes data protection law. Current details are on
+                <a href="https://uodo.gov.pl/" target="_blank" rel="noopener noreferrer">the official UODO website</a>.
+                Contacting us first is optional, not a prerequisite for a complaint.</p>
+            <p>This policy must be updated when processing purposes, features, providers, technology
+                or law changes. The current version and date appear here. Publishing an update does
+                not replace any required notification or new consent.</p>
+        </section>
+    </article>
+</div>
