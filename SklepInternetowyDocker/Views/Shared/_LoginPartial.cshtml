@@ -7,21 +7,21 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="@User.Identity?.Name">Moje konto</a>
+        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="@User.Identity?.Name">@T["Moje konto"]</a>
     </li>
     <li class="nav-item">
         <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Wyloguj</button>
+            <button  type="submit" class="nav-link btn btn-link text-dark">@T["Wyloguj"]</button>
         </form>
     </li>
 }
 else
 {
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Rejestracja</a>
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">@T["Rejestracja"]</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Zaloguj się</a>
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">@T["Zaloguj się"]</a>
     </li>
 }
 </ul>

@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Localization;
 
 namespace SklepInternetowyDocker.Services;
 
-public class PolishIdentityErrorDescriber : IdentityErrorDescriber
+public class PolishIdentityErrorDescriber(IStringLocalizer<SharedResource> text) : IdentityErrorDescriber
 {
     public override IdentityError DefaultError() =>
         Error(nameof(DefaultError), "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.");
@@ -32,10 +33,10 @@ public class PolishIdentityErrorDescriber : IdentityErrorDescriber
         Error(nameof(DuplicateEmail), "Konto z tym adresem e-mail już istnieje.");
 
     public override IdentityError PasswordTooShort(int length) =>
-        Error(nameof(PasswordTooShort), $"Hasło musi mieć co najmniej {length} znaków.");
+        Error(nameof(PasswordTooShort), text["Hasło musi mieć co najmniej {0} znaków.", length]);
 
     public override IdentityError PasswordRequiresUniqueChars(int uniqueChars) =>
-        Error(nameof(PasswordRequiresUniqueChars), $"Hasło musi zawierać co najmniej {uniqueChars} różnych znaków.");
+        Error(nameof(PasswordRequiresUniqueChars), text["Hasło musi zawierać co najmniej {0} różnych znaków.", uniqueChars]);
 
     public override IdentityError PasswordRequiresNonAlphanumeric() =>
         Error(nameof(PasswordRequiresNonAlphanumeric), "Hasło musi zawierać co najmniej jeden znak specjalny.");
@@ -49,6 +50,6 @@ public class PolishIdentityErrorDescriber : IdentityErrorDescriber
     public override IdentityError PasswordRequiresUpper() =>
         Error(nameof(PasswordRequiresUpper), "Hasło musi zawierać co najmniej jedną wielką literę.");
 
-    private static IdentityError Error(string code, string description) =>
-        new() { Code = code, Description = description };
+    private IdentityError Error(string code, string description) =>
+        new() { Code = code, Description = text[description] };
 }

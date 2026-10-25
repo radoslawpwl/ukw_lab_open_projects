@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Localization;
 using SklepInternetowyDocker.Models;
 
 namespace SklepInternetowyDocker.Areas.Identity.Pages.Account;
@@ -11,6 +12,7 @@ namespace SklepInternetowyDocker.Areas.Identity.Pages.Account;
 [AllowAnonymous]
 public class LoginModel(
     SignInManager<ApplicationUser> signInManager,
+    IStringLocalizer<SharedResource> text,
     ILogger<LoginModel> logger) : PageModel
 {
     [BindProperty]
@@ -42,7 +44,7 @@ public class LoginModel(
     {
         if (!string.IsNullOrEmpty(ErrorMessage))
         {
-            ModelState.AddModelError(string.Empty, "Nie udało się zalogować. Spróbuj ponownie.");
+            ModelState.AddModelError(string.Empty, text["Nie udało się zalogować. Spróbuj ponownie."]);
         }
 
         await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
@@ -73,12 +75,12 @@ public class LoginModel(
         if (result.IsLockedOut)
         {
             logger.LogWarning("User account locked out.");
-            ModelState.AddModelError(string.Empty, "Konto jest zablokowane. Spróbuj ponownie później.");
+            ModelState.AddModelError(string.Empty, text["Konto jest zablokowane. Spróbuj ponownie później."]);
             return Page();
         }
 
         ModelState.AddModelError(string.Empty,
-            "Nie udało się zalogować. Sprawdź adres e-mail, hasło i potwierdzenie konta.");
+            text["Nie udało się zalogować. Sprawdź adres e-mail, hasło i potwierdzenie konta."]);
         return Page();
     }
 

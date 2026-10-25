@@ -19,6 +19,37 @@
   --bs-link-hover-color: var(--shop-text);
 }
 
+.language-switch {
+  display: flex;
+  gap: 0.25rem;
+  margin-inline-start: 0.75rem;
+  flex-shrink: 0;
+}
+
+.language-switch button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--shop-muted);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.language-switch button[aria-pressed="true"] {
+  background: var(--shop-accent);
+  color: var(--shop-ink);
+}
+
+.language-switch button:hover,
+.language-switch button:focus-visible {
+  border-color: var(--shop-link);
+  color: var(--shop-text);
+}
+
 html {
   min-height: 100%;
   font-size: 16px;

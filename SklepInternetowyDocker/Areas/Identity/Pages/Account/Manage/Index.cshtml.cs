@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Localization;
 using SklepInternetowyDocker.Models;
 
 namespace SklepInternetowyDocker.Areas.Identity.Pages.Account.Manage;
@@ -10,7 +11,8 @@ namespace SklepInternetowyDocker.Areas.Identity.Pages.Account.Manage;
 [Authorize]
 public class IndexModel(
     UserManager<ApplicationUser> userManager,
-    SignInManager<ApplicationUser> signInManager) : PageModel
+    SignInManager<ApplicationUser> signInManager,
+    IStringLocalizer<SharedResource> text) : PageModel
 {
     public string? Username { get; private set; }
 
@@ -141,7 +143,7 @@ public class IndexModel(
         }
 
         await signInManager.RefreshSignInAsync(user);
-        StatusMessage = "Dane profilu zostały zapisane.";
+        StatusMessage = text["Dane profilu zostały zapisane."];
         return RedirectToPage();
     }
 

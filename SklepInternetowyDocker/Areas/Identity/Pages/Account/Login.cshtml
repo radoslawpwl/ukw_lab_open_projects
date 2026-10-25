@@ -6,8 +6,8 @@
 
 <div class="row justify-content-center">
     <section class="col-md-8 col-lg-6">
-        <p class="service-category">RP-bit / Konto klienta</p>
-        <h1 class="mb-4">Zaloguj się</h1>
+        <p class="service-category">RP-bit / @T["Konto klienta"]</p>
+        <h1 class="mb-4">@T["Zaloguj się"]</h1>
 
         <form id="account" method="post" asp-route-returnUrl="@Model.ReturnUrl">
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
@@ -25,18 +25,18 @@
                 <input asp-for="Input.RememberMe" class="form-check-input" />
                 <label asp-for="Input.RememberMe" class="form-check-label"></label>
             </div>
-            <button id="login-submit" type="submit" class="btn btn-primary w-100">Zaloguj się</button>
+            <button id="login-submit" type="submit" class="btn btn-primary w-100">@T["Zaloguj się"]</button>
         </form>
 
         <div class="d-flex flex-column align-items-start gap-2 mt-4">
-            <a asp-page="./ForgotPassword">Nie pamiętasz hasła?</a>
-            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Nie masz konta? Zarejestruj się</a>
-            <a asp-page="./ResendEmailConfirmation">Wyślij ponownie potwierdzenie adresu e-mail</a>
+            <a asp-page="./ForgotPassword">@T["Nie pamiętasz hasła?"]</a>
+            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">@T["Nie masz konta? Zarejestruj się"]</a>
+            <a asp-page="./ResendEmailConfirmation">@T["Wyślij ponownie potwierdzenie adresu e-mail"]</a>
         </div>
 
         @if (Model.ExternalLogins.Count > 0)
         {
-            <h2 class="h5 mt-4">Zaloguj się przez</h2>
+            <h2 class="h5 mt-4">@T["Zaloguj się przez"]</h2>
             <form asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="d-flex flex-wrap gap-2">
                 @foreach (var provider in Model.ExternalLogins)
                 {

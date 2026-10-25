@@ -2,12 +2,12 @@
 
 @{
     ViewData["Title"] = Model.Name;
-    var currency = System.Globalization.CultureInfo.GetCultureInfo("pl-PL");
+    var currency = CultureInfo.CurrentCulture;
 }
 
-<a class="d-inline-block mb-4" asp-action="Index">Wszystkie usługi</a>
-<p class="service-category">@Model.Category?.Name</p>
-<h1>@Model.Name</h1>
+<a class="d-inline-block mb-4" asp-action="Index">@T["Wszystkie usługi"]</a>
+<p class="service-category">@T[Model.Category?.Name ?? ""]</p>
+<h1>@T[Model.Name]</h1>
 
 @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
 {
@@ -16,20 +16,18 @@
          alt="" width="1200" height="457" />
 }
 
-<h2 class="h4 mb-3">Zakres pakietu</h2>
-<p class="service-detail-copy">@Model.Description</p>
-<p class="service-price">@Model.Price.ToString("N2", currency) zł <span>netto / pakiet</span></p>
+<h2 class="h4 mb-3">@T["Zakres pakietu"]</h2>
+<p class="service-detail-copy">@T[Model.Description]</p>
+<p class="service-price">@Model.Price.ToString("N2", currency) PLN <span>@T["netto / pakiet"]</span></p>
 
 <div class="service-detail-actions">
     <form asp-controller="Cart" asp-action="Add" method="post">
         <input type="hidden" name="productId" value="@Model.Id" />
-        <button class="btn btn-primary" type="submit">Dodaj usługę do koszyka</button>
+        <button class="btn btn-primary" type="submit">@T["Dodaj usługę do koszyka"]</button>
     </form>
-    <a class="btn btn-outline-secondary" asp-controller="Contact" asp-action="Index" asp-route-productId="@Model.Id">Zapytaj o zakres i termin</a>
+    <a class="btn btn-outline-secondary" asp-controller="Contact" asp-action="Index" asp-route-productId="@Model.Id">@T["Zapytaj o zakres i termin"]</a>
 </div>
 
 <aside class="pricing-note">
-    Cena orientacyjna netto, przed ewentualnym VAT. Realizacja po potwierdzeniu zakresu, terminu i wyceny.
-    Koszty sprzętu, licencji i chmury poza pakietem, chyba że opis wskazuje inaczej.
-    Testy bezpieczeństwa są realizowane wyłącznie za pisemną zgodą właściciela systemu.
+    @T["Cena orientacyjna netto, przed ewentualnym VAT. Realizacja po potwierdzeniu zakresu, terminu i wyceny. Koszty sprzętu, licencji i chmury poza pakietem, chyba że opis wskazuje inaczej. Testy bezpieczeństwa są realizowane wyłącznie za pisemną zgodą właściciela systemu."]
 </aside>

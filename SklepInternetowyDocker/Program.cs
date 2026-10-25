@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using SklepInternetowyDocker.Data;
 using SklepInternetowyDocker.Models;
 using SklepInternetowyDocker.Services;
+using System.Globalization;
 using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +19,21 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddErrorDescriber<PolishIdentityErrorDescriber>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddControllersWithViews();
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization()
+    .AddDataAnnotationsLocalization(options =>
+        options.DataAnnotationLocalizerProvider = (_, factory) =>
+            factory.Create(typeof(SklepInternetowyDocker.SharedResource)));
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var cultures = new[] { new CultureInfo("pl-PL"), new CultureInfo("en-GB") };
+    options.DefaultRequestCulture = new RequestCulture("pl-PL");
+    options.SupportedCultures = cultures;
+    options.SupportedUICultures = cultures;
+    options.RequestCultureProviders = [new CookieRequestCultureProvider()];
+    options.ApplyCurrentCultureToResponseHeaders = true;
+});
 
 builder.Services.Configure<ContactMailOptions>(builder.Configuration.GetSection("ContactMail"));
 builder.Services.AddTransient<IContactEmailSender, SmtpContactEmailSender>();
@@ -29,7 +45,8 @@ builder.Services.AddRateLimiter(options =>
         context.HttpContext.Response.ContentType = "text/plain; charset=utf-8";
         context.HttpContext.Response.Headers.RetryAfter = "600";
         await context.HttpContext.Response.WriteAsync(
-            "Zbyt wiele prób wysyłki. Spróbuj ponownie za 10 minut.", cancellationToken);
+            context.HttpContext.RequestServices.GetRequiredService<Microsoft.Extensions.Localization.IStringLocalizer<SklepInternetowyDocker.SharedResource>>()
+                ["Zbyt wiele prób wysyłki. Spróbuj ponownie za 10 minut."], cancellationToken);
     };
     options.AddPolicy("contact", context => RateLimitPartition.GetFixedWindowLimiter(
         context.Connection.RemoteIpAddress?.ToString() ?? "unknown",
@@ -60,6 +77,7 @@ using (var scope = app.Services.CreateScope())
     await dbContext.Database.MigrateAsync();
     await DbInitializer.SeedAsync(dbContext);
 }
+app.UseRequestLocalization();
 app.UseHttpsRedirection();
 // Konfiguracja potoku HTTP.
 if (app.Environment.IsDevelopment())

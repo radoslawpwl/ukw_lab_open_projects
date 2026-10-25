@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="Menu główne" xml:space="preserve"><value>Main navigation</value></data>
+  <data name="RP-bit — sklep z usługami IT" xml:space="preserve"><value>RP-bit — IT services</value></data>
+  <data name="Rozwiń menu" xml:space="preserve"><value>Toggle navigation</value></data>
+  <data name="Język" xml:space="preserve"><value>Language</value></data>
+  <data name="Usługi" xml:space="preserve"><value>Services</value></data>
+  <data name="O RP-bit" xml:space="preserve"><value>About RP-bit</value></data>
+  <data name="Kontakt" xml:space="preserve"><value>Contact</value></data>
+  <data name="Koszyk usług" xml:space="preserve"><value>Service basket</value></data>
+  <data name="Formularz kontaktowy" xml:space="preserve"><value>Contact form</value></data>
+  <data name="Prywatność" xml:space="preserve"><value>Privacy</value></data>
+  <data name="Moje konto" xml:space="preserve"><value>My account</value></data>
+  <data name="Wyloguj" xml:space="preserve"><value>Sign out</value></data>
+  <data name="Rejestracja" xml:space="preserve"><value>Register</value></data>
+  <data name="Zaloguj się" xml:space="preserve"><value>Sign in</value></data>
+  <data name="Usługi IT i bezpieczeństwo" xml:space="preserve"><value>IT and security services</value></data>
+  <data name="Usługi IT" xml:space="preserve"><value>IT services</value></data>
+  <data name="Audyty, testy bezpieczeństwa i prywatna AI. Wybierz pakiet z określonym zakresem lub porozmawiajmy o Twoim projekcie." xml:space="preserve"><value>Audits, security testing and private AI. Choose a scoped package or discuss your project with us.</value></data>
+  <data name="Wszystkie usługi" xml:space="preserve"><value>All services</value></data>
+  <data name="Kategorie usług" xml:space="preserve"><value>Service categories</value></data>
+  <data name="Pakiety" xml:space="preserve"><value>Packages</value></data>
+  <data name="netto" xml:space="preserve"><value>excluding VAT</value></data>
+  <data name="netto / pakiet" xml:space="preserve"><value>excluding VAT / package</value></data>
+  <data name="Zakres: {0}" xml:space="preserve"><value>Scope: {0}</value></data>
+  <data name="Zakres pakietu" xml:space="preserve"><value>Package scope</value></data>
+  <data name="Dodaj usługę: {0}" xml:space="preserve"><value>Add service: {0}</value></data>
+  <data name="Dodaj usługę" xml:space="preserve"><value>Add service</value></data>
+  <data name="W tej kategorii nie ma obecnie dostępnych usług." xml:space="preserve"><value>No services are currently available in this category.</value></data>
+  <data name="Warunki wyceny" xml:space="preserve"><value>Pricing terms</value></data>
+  <data name="Przejrzysty zakres, indywidualna wycena." xml:space="preserve"><value>Clear scope, tailored pricing.</value></data>
+  <data name="Ceny są orientacyjnymi propozycjami netto, przed ewentualnym VAT. Ostateczna cena i termin wymagają potwierdzenia zakresu. Sprzęt, licencje i koszty chmury nie są wliczone, o ile opis pakietu nie stanowi inaczej. Testy bezpieczeństwa wymagają pisemnej zgody właściciela systemu." xml:space="preserve"><value>Prices are indicative and exclude any applicable VAT. Final pricing and scheduling are subject to scope confirmation. Hardware, licences and cloud costs are excluded unless stated otherwise. Security testing requires written authorisation from the system owner.</value></data>
+  <data name="Twój projekt nie mieści się w pakiecie?" xml:space="preserve"><value>Need something beyond a package?</value></data>
+  <data name="Ustalmy zakres, priorytety i sposób realizacji." xml:space="preserve"><value>Let's agree on scope, priorities and delivery.</value></data>
+  <data name="Porozmawiajmy o projekcie" xml:space="preserve"><value>Let's discuss your project</value></data>
+  <data name="Dodaj usługę do koszyka" xml:space="preserve"><value>Add service to basket</value></data>
+  <data name="Zapytaj o zakres i termin" xml:space="preserve"><value>Ask about scope and availability</value></data>
+  <data name="Cena orientacyjna netto, przed ewentualnym VAT. Realizacja po potwierdzeniu zakresu, terminu i wyceny. Koszty sprzętu, licencji i chmury poza pakietem, chyba że opis wskazuje inaczej. Testy bezpieczeństwa są realizowane wyłącznie za pisemną zgodą właściciela systemu." xml:space="preserve"><value>Indicative price excluding any applicable VAT. Delivery is subject to confirmed scope, scheduling and pricing. Hardware, licences and cloud costs are excluded unless stated otherwise. Security testing is performed only with written authorisation from the system owner.</value></data>
+  <data name="Nie masz jeszcze wybranych usług." xml:space="preserve"><value>You haven't selected any services yet.</value></data>
+  <data name="Przeglądaj usługi" xml:space="preserve"><value>Browse services</value></data>
+  <data name="Usługa" xml:space="preserve"><value>Service</value></data>
+  <data name="Cena netto" xml:space="preserve"><value>Price excluding VAT</value></data>
+  <data name="Razem netto" xml:space="preserve"><value>Total excluding VAT</value></data>
+  <data name="Suma netto" xml:space="preserve"><value>Subtotal excluding VAT</value></data>
+  <data name="Usuń" xml:space="preserve"><value>Remove</value></data>
+  <data name="Zapytaj o realizację" xml:space="preserve"><value>Enquire about delivery</value></data>
+  <data name="Dodaj kolejną usługę" xml:space="preserve"><value>Add another service</value></data>
+  <data name="Wyczyść koszyk" xml:space="preserve"><value>Clear basket</value></data>
+  <data name="Koszyk służy do przygotowania zapytania, nie stanowi złożenia zamówienia ani płatności. Suma jest orientacyjna i nie zawiera ewentualnego VAT. Zakres, termin i ostateczna wycena wymagają potwierdzenia." xml:space="preserve"><value>The basket prepares an enquiry, not an order or payment. The total is indicative and excludes any applicable VAT. Scope, availability and final pricing require confirmation.</value></data>
+  <data name="Usługa została dodana do koszyka." xml:space="preserve"><value>The service has been added to your basket.</value></data>
+  <data name="Doradztwo" xml:space="preserve"><value>Consulting</value></data>
+  <data name="Bezpieczeństwo" xml:space="preserve"><value>Security</value></data>
+  <data name="Wydajność" xml:space="preserve"><value>Performance</value></data>
+  <data name="Infrastruktura i AI" xml:space="preserve"><value>Infrastructure and AI</value></data>
+  <data name="Konsultacja IT &amp; Security" xml:space="preserve"><value>IT &amp; Security consultation</value></data>
+  <data name="Audyt bezpieczeństwa IT" xml:space="preserve"><value>IT security audit</value></data>
+  <data name="Pentest aplikacji webowej" xml:space="preserve"><value>Web application penetration test</value></data>
+  <data name="Testy bezpieczeństwa API" xml:space="preserve"><value>API security testing</value></data>
+  <data name="Testy wydajnościowe" xml:space="preserve"><value>Performance testing</value></data>
+  <data name="Hardening serwerów Linux" xml:space="preserve"><value>Linux server hardening</value></data>
+  <data name="Wdrożenie prywatnego serwera AI" xml:space="preserve"><value>Private AI server deployment</value></data>
+  <data name="Asystent AI z wiedzą firmową" xml:space="preserve"><value>AI assistant with company knowledge</value></data>
+  <data name="Dwie godziny konsultacji online z przeglądem architektury lub problemu bezpieczeństwa. W pakiecie podsumowanie i lista rekomendowanych działań; bez prac wdrożeniowych." xml:space="preserve"><value>Two hours of online consultation reviewing your architecture or a security concern. Includes a summary and recommended actions; implementation work is not included.</value></data>
+  <data name="Przegląd konfiguracji do 10 serwerów, uprawnień i kopii zapasowych. Raport ryzyk, priorytety napraw i spotkanie podsumowujące. Pakiet nie obejmuje testów penetracyjnych ani certyfikacji zgodności." xml:space="preserve"><value>Configuration review of up to 10 servers, permissions and backups. Includes a risk report, remediation priorities and a review meeting. Penetration testing and compliance certification are not included.</value></data>
+  <data name="Manualne testy jednej aplikacji, do 30 endpointów, w oparciu o OWASP WSTG. Raport, rekomendacje i jeden retest w ciągu 30 dni. Testy wyłącznie na podstawie pisemnej zgody właściciela systemu." xml:space="preserve"><value>Manual testing of one application, up to 30 endpoints, based on OWASP WSTG. Includes a report, recommendations and one retest within 30 days. Written authorisation from the system owner is required.</value></data>
+  <data name="Ocena jednego API, do 20 endpointów: uwierzytelnianie, autoryzacja, walidacja danych i ograniczenia dostępu. Raport oraz jeden retest. Wymagane uzgodnienie zakresu i pisemna zgoda na testy." xml:space="preserve"><value>Assessment of one API, up to 20 endpoints: authentication, authorisation, input validation and access controls. Includes a report and one retest. Agreed scope and written authorisation are required.</value></data>
+  <data name="Do trzech scenariuszy obciążenia aplikacji HTTP lub API w k6 albo JMeter. Analiza czasów odpowiedzi, błędów i wąskich gardeł oraz raport. Infrastruktura testowa i koszty chmury poza pakietem." xml:space="preserve"><value>Up to three load scenarios for an HTTP application or API using k6 or JMeter. Includes response-time, error and bottleneck analysis and a report. Test infrastructure and cloud costs are excluded.</value></data>
+  <data name="Utwardzenie konfiguracji do trzech serwerów Linux: SSH, firewall, aktualizacje, uprawnienia i logowanie zdarzeń. Dokumentacja zmian i lista zaleceń. Licencje i utrzymanie poza pakietem." xml:space="preserve"><value>Hardening of up to three Linux servers: SSH, firewall, updates, permissions and logging. Includes change documentation and recommendations. Licences and ongoing maintenance are excluded.</value></data>
+  <data name="Uruchomienie środowiska LLM na jednym serwerze klienta: Ollama lub vLLM, interfejs użytkownika, kontrola dostępu i instrukcja utrzymania. Sprzęt, chmura, licencje i integracje z systemami poza pakietem." xml:space="preserve"><value>Deployment of an LLM environment on one client server: Ollama or vLLM, user interface, access controls and maintenance instructions. Hardware, cloud, licences and system integrations are excluded.</value></data>
+  <data name="Pilotaż rozwiązania RAG dla jednego uzgodnionego źródła dokumentów: indeksowanie, wyszukiwanie i interfejs rozmowy. Odbiór według uzgodnionych scenariuszy. Infrastruktura, API modeli i dalsze utrzymanie poza pakietem." xml:space="preserve"><value>A RAG pilot for one agreed document source: indexing, search and a chat interface. Acceptance is based on agreed scenarios. Infrastructure, model APIs and ongoing maintenance are excluded.</value></data>
+  <data name="Podaj adres e-mail." xml:space="preserve"><value>Enter your email address.</value></data>
+  <data name="Podaj poprawny adres e-mail." xml:space="preserve"><value>Enter a valid email address.</value></data>
+  <data name="Adres e-mail" xml:space="preserve"><value>Email address</value></data>
+  <data name="Podaj hasło." xml:space="preserve"><value>Enter your password.</value></data>
+  <data name="Hasło" xml:space="preserve"><value>Password</value></data>
+  <data name="Zapamiętaj mnie" xml:space="preserve"><value>Remember me</value></data>
+  <data name="Hasło musi mieć od {2} do {1} znaków." xml:space="preserve"><value>The password must be between {2} and {1} characters.</value></data>
+  <data name="Powtórz hasło." xml:space="preserve"><value>Confirm your password.</value></data>
+  <data name="Powtórz hasło" xml:space="preserve"><value>Confirm password</value></data>
+  <data name="Podane hasła nie są takie same." xml:space="preserve"><value>The passwords do not match.</value></data>
+  <data name="Nie udało się zalogować. Spróbuj ponownie." xml:space="preserve"><value>Sign-in failed. Please try again.</value></data>
+  <data name="Konto jest zablokowane. Spróbuj ponownie później." xml:space="preserve"><value>This account is locked. Please try again later.</value></data>
+  <data name="Nie udało się zalogować. Sprawdź adres e-mail, hasło i potwierdzenie konta." xml:space="preserve"><value>Sign-in failed. Check your email address, password and account confirmation.</value></data>
+  <data name="Podaj imię i nazwisko lub nazwę firmy." xml:space="preserve"><value>Enter your full name or company name.</value></data>
+  <data name="Maksymalna długość to {1} znaków." xml:space="preserve"><value>The maximum length is {1} characters.</value></data>
+  <data name="Imię i nazwisko lub firma" xml:space="preserve"><value>Full name or company</value></data>
+  <data name="Podaj adres e-mail do odpowiedzi." xml:space="preserve"><value>Enter an email address for our reply.</value></data>
+  <data name="Wybierz temat wiadomości." xml:space="preserve"><value>Select a message topic.</value></data>
+  <data name="Wybierz poprawny temat." xml:space="preserve"><value>Select a valid topic.</value></data>
+  <data name="Temat" xml:space="preserve"><value>Topic</value></data>
+  <data name="Wpisz treść wiadomości." xml:space="preserve"><value>Enter your message.</value></data>
+  <data name="Wiadomość musi mieć od {2} do {1} znaków." xml:space="preserve"><value>The message must be between {2} and {1} characters.</value></data>
+  <data name="Wiadomość" xml:space="preserve"><value>Message</value></data>
+  <data name="Zapytanie o usługę" xml:space="preserve"><value>Service enquiry</value></data>
+  <data name="Audyty i bezpieczeństwo" xml:space="preserve"><value>Audits and security</value></data>
+  <data name="Inne pytanie" xml:space="preserve"><value>Other enquiry</value></data>
+  <data name="Wybierz temat" xml:space="preserve"><value>Select a topic</value></data>
+  <data name="Dane posłużą do obsługi zapytania i kontaktu zwrotnego." xml:space="preserve"><value>Your details will be used to handle your enquiry and reply to you.</value></data>
+  <data name="Polityka prywatności" xml:space="preserve"><value>Privacy policy</value></data>
+  <data name="Wysłanie zapytania nie stanowi złożenia zamówienia ani zgody na marketing." xml:space="preserve"><value>Sending an enquiry does not place an order or provide marketing consent.</value></data>
+  <data name="Wyślij wiadomość" xml:space="preserve"><value>Send message</value></data>
+  <data name="Audyty bezpieczeństwa, testy aplikacji i API, wydajność, infrastruktura Linux oraz prywatne rozwiązania AI." xml:space="preserve"><value>Security audits, application and API testing, performance, Linux infrastructure and private AI solutions.</value></data>
+  <data name="Zobacz zakres usług" xml:space="preserve"><value>Explore our services</value></data>
+  <data name="Formularz jest tymczasowo niedostępny. Administrator musi skonfigurować serwer pocztowy." xml:space="preserve"><value>The form is temporarily unavailable. The administrator needs to configure the mail server.</value></data>
+  <data name="Tryb testowy: wiadomości trafiają do lokalnej skrzynki Mailpit, a nie na prawdziwą pocztę RP-bit." xml:space="preserve"><value>Test mode: messages go to the local Mailpit inbox, not the real RP-bit mailbox.</value></data>
+  <data name="Podaj pojedynczy, poprawny adres e-mail." xml:space="preserve"><value>Enter a single valid email address.</value></data>
+  <data name="Nie udało się potwierdzić wysyłki wiadomości. Treść pozostała w formularzu. Spróbuj ponownie później." xml:space="preserve"><value>We could not confirm that the message was sent. Your text remains in the form. Please try again later.</value></data>
+  <data name="Zbyt wiele prób wysyłki. Spróbuj ponownie za 10 minut." xml:space="preserve"><value>Too many attempts. Please try again in 10 minutes.</value></data>
+  <data name="Dzień dobry, proszę o potwierdzenie zakresu i terminu realizacji usług:" xml:space="preserve"><value>Hello, please confirm the scope and availability of the following services:</value></data>
+  <data name="Dzień dobry, proszę o potwierdzenie zakresu i terminu usługi: {0}." xml:space="preserve"><value>Hello, please confirm the scope and availability of this service: {0}.</value></data>
+  <data name="pakiet(y)" xml:space="preserve"><value>package(s)</value></data>
+  <data name="Suma orientacyjna" xml:space="preserve"><value>Estimated total</value></data>
+  <data name="Cena orientacyjna" xml:space="preserve"><value>Indicative price</value></data>
+  <data name="Potwierdzenie wysyłki" xml:space="preserve"><value>Message confirmation</value></data>
+  <data name="Wiadomość w skrzynce testowej" xml:space="preserve"><value>Message in the test inbox</value></data>
+  <data name="Wiadomość przekazana do wysyłki" xml:space="preserve"><value>Message submitted</value></data>
+  <data name="Mailpit przyjął wiadomość lokalnie. Nie została wysłana na prawdziwą skrzynkę RP-bit." xml:space="preserve"><value>Mailpit accepted the message locally. It was not sent to the real RP-bit mailbox.</value></data>
+  <data name="Serwer pocztowy przyjął Twoją wiadomość. Odpowiedź otrzymasz na podany adres e-mail." xml:space="preserve"><value>The mail server accepted your message. We will reply to the email address you provided.</value></data>
+  <data name="Wróć do usług" xml:space="preserve"><value>Back to services</value></data>
+  <data name="Numer telefonu" xml:space="preserve"><value>Phone number</value></data>
+  <data name="Podaj poprawny numer telefonu." xml:space="preserve"><value>Enter a valid phone number.</value></data>
+  <data name="Imię i nazwisko odbiorcy" xml:space="preserve"><value>Recipient's full name</value></data>
+  <data name="Ulica, numer budynku i lokalu" xml:space="preserve"><value>Street, building and apartment number</value></data>
+  <data name="Kod pocztowy" xml:space="preserve"><value>Postal code</value></data>
+  <data name="Miejscowość" xml:space="preserve"><value>City</value></data>
+  <data name="Kraj" xml:space="preserve"><value>Country</value></data>
+  <data name="Imię i nazwisko lub nazwa firmy" xml:space="preserve"><value>Full name or company name</value></data>
+  <data name="NIP / numer podatkowy" xml:space="preserve"><value>VAT / tax identification number</value></data>
+  <data name="Adres do faktury taki sam jak adres dostawy" xml:space="preserve"><value>Billing address is the same as shipping address</value></data>
+  <data name="Dane profilu zostały zapisane." xml:space="preserve"><value>Your profile has been saved.</value></data>
+  <data name="Konto klienta" xml:space="preserve"><value>Customer account</value></data>
+  <data name="Nie pamiętasz hasła?" xml:space="preserve"><value>Forgot your password?</value></data>
+  <data name="Nie masz konta? Zarejestruj się" xml:space="preserve"><value>Don't have an account? Register</value></data>
+  <data name="Wyślij ponownie potwierdzenie adresu e-mail" xml:space="preserve"><value>Resend email confirmation</value></data>
+  <data name="Zaloguj się przez" xml:space="preserve"><value>Sign in with</value></data>
+  <data name="Utwórz konto" xml:space="preserve"><value>Create an account</value></data>
+  <data name="Zarejestruj się" xml:space="preserve"><value>Register</value></data>
+  <data name="Masz już konto? Zaloguj się" xml:space="preserve"><value>Already have an account? Sign in</value></data>
+  <data name="Zarejestruj się przez" xml:space="preserve"><value>Register with</value></data>
+  <data name="Potwierdź adres e-mail" xml:space="preserve"><value>Confirm your email address</value></data>
+  <data name="Potwierdzenie adresu e-mail" xml:space="preserve"><value>Email confirmation</value></data>
+  <data name="Poczta do potwierdzania kont nie jest skonfigurowana. Wiadomość nie została wysłana." xml:space="preserve"><value>Account confirmation email is not configured. No message was sent.</value></data>
+  <data name="Potwierdź konto testowe" xml:space="preserve"><value>Confirm test account</value></data>
+  <data name="Na adres {0} wysłaliśmy wiadomość z odnośnikiem do potwierdzenia konta." xml:space="preserve"><value>We sent an account confirmation link to {0}.</value></data>
+  <data name="Przejdź do logowania" xml:space="preserve"><value>Continue to sign in</value></data>
+  <data name="Adres e-mail został potwierdzony. Możesz się zalogować." xml:space="preserve"><value>Your email address has been confirmed. You can sign in.</value></data>
+  <data name="Nie udało się potwierdzić adresu e-mail. Odnośnik jest nieprawidłowy lub wygasł." xml:space="preserve"><value>We could not confirm your email address. The link is invalid or has expired.</value></data>
+  <data name="Profil" xml:space="preserve"><value>Profile</value></data>
+  <data name="Logowanie zewnętrzne" xml:space="preserve"><value>External logins</value></data>
+  <data name="Uwierzytelnianie dwuskładnikowe" xml:space="preserve"><value>Two-factor authentication</value></data>
+  <data name="Dane osobowe" xml:space="preserve"><value>Personal data</value></data>
+  <data name="Zarządzanie kontem" xml:space="preserve"><value>Manage your account</value></data>
+  <data name="Zmień ustawienia konta" xml:space="preserve"><value>Change your account settings</value></data>
+  <data name="Dane profilu" xml:space="preserve"><value>Profile details</value></data>
+  <data name="Login" xml:space="preserve"><value>Username</value></data>
+  <data name="Dane do wysyłki" xml:space="preserve"><value>Shipping details</value></data>
+  <data name="Dane do faktury" xml:space="preserve"><value>Billing details</value></data>
+  <data name="Adres do faktury" xml:space="preserve"><value>Billing address</value></data>
+  <data name="Zapisz dane" xml:space="preserve"><value>Save details</value></data>
+  <data name="Wystąpił nieoczekiwany błąd. Spróbuj ponownie." xml:space="preserve"><value>An unexpected error occurred. Please try again.</value></data>
+  <data name="Dane zostały zmienione. Odśwież stronę i spróbuj ponownie." xml:space="preserve"><value>The data has changed. Refresh the page and try again.</value></data>
+  <data name="Kod jest nieprawidłowy lub wygasł." xml:space="preserve"><value>The code is invalid or has expired.</value></data>
+  <data name="Hasło jest nieprawidłowe." xml:space="preserve"><value>The password is incorrect.</value></data>
+  <data name="To konto zewnętrzne jest już powiązane z innym użytkownikiem." xml:space="preserve"><value>This external account is already linked to another user.</value></data>
+  <data name="Adres użyty jako nazwa użytkownika zawiera niedozwolone znaki." xml:space="preserve"><value>The email address used as a username contains unsupported characters.</value></data>
+  <data name="Konto z tym adresem e-mail już istnieje." xml:space="preserve"><value>An account with this email address already exists.</value></data>
+  <data name="Hasło musi mieć co najmniej {0} znaków." xml:space="preserve"><value>The password must contain at least {0} characters.</value></data>
+  <data name="Hasło musi zawierać co najmniej {0} różnych znaków." xml:space="preserve"><value>The password must contain at least {0} different characters.</value></data>
+  <data name="Hasło musi zawierać co najmniej jeden znak specjalny." xml:space="preserve"><value>The password must contain at least one special character.</value></data>
+  <data name="Hasło musi zawierać co najmniej jedną cyfrę." xml:space="preserve"><value>The password must contain at least one digit.</value></data>
+  <data name="Hasło musi zawierać co najmniej jedną małą literę." xml:space="preserve"><value>The password must contain at least one lowercase letter.</value></data>
+  <data name="Hasło musi zawierać co najmniej jedną wielką literę." xml:space="preserve"><value>The password must contain at least one uppercase letter.</value></data>
+  <data name="Błąd" xml:space="preserve"><value>Error</value></data>
+  <data name="Nie udało się przetworzyć żądania. Spróbuj ponownie później." xml:space="preserve"><value>We could not process your request. Please try again later.</value></data>
+  <data name="Identyfikator żądania" xml:space="preserve"><value>Request ID</value></data>
+</root>

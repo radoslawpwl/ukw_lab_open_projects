@@ -7,7 +7,7 @@
     Layout = "/Areas/Identity/Pages/Account/Manage/_Layout.cshtml";
 }
 
-<h2 class="h3 mb-4">Dane profilu</h2>
+<h2 class="h3 mb-4">@T["Dane profilu"]</h2>
 
 @if (!string.IsNullOrEmpty(Model.StatusMessage))
 {
@@ -19,7 +19,7 @@
 
     <div class="row g-3 mb-4">
         <div class="col-lg-6">
-            <label for="username" class="form-label">Login</label>
+            <label for="username" class="form-label">@T["Login"]</label>
             <input id="username" class="form-control" value="@Model.Username" autocomplete="username" disabled />
         </div>
         <div class="col-lg-6">
@@ -31,7 +31,7 @@
 
     <div class="row g-4">
         <section class="col-lg-6" aria-labelledby="shipping-heading">
-            <h3 id="shipping-heading" class="h4 mb-3">Dane do wysyłki</h3>
+            <h3 id="shipping-heading" class="h4 mb-3">@T["Dane do wysyłki"]</h3>
             <div class="mb-3">
                 <label asp-for="Input.ShippingRecipient" class="form-label"></label>
                 <input asp-for="Input.ShippingRecipient" class="form-control" autocomplete="shipping name" />
@@ -60,7 +60,7 @@
         </section>
 
         <section class="col-lg-6" aria-labelledby="invoice-heading">
-            <h3 id="invoice-heading" class="h4 mb-3">Dane do faktury</h3>
+            <h3 id="invoice-heading" class="h4 mb-3">@T["Dane do faktury"]</h3>
             <div class="mb-3">
                 <label asp-for="Input.InvoiceRecipient" class="form-label"></label>
                 <input asp-for="Input.InvoiceRecipient" class="form-control" autocomplete="billing organization" />
@@ -76,7 +76,7 @@
                 <label asp-for="Input.InvoiceUsesShippingAddress" class="form-check-label"></label>
             </div>
             <fieldset id="invoice-address" disabled="@Model.Input.InvoiceUsesShippingAddress">
-                <legend class="h6">Adres do faktury</legend>
+                <legend class="h6">@T["Adres do faktury"]</legend>
                 <div class="mb-3">
                     <label asp-for="Input.InvoiceStreet" class="form-label"></label>
                     <input asp-for="Input.InvoiceStreet" class="form-control" autocomplete="billing street-address" />
@@ -101,7 +101,7 @@
         </section>
     </div>
 
-    <button type="submit" class="btn btn-primary mt-3">Zapisz dane</button>
+    <button type="submit" class="btn btn-primary mt-3">@T["Zapisz dane"]</button>
 </form>
 
 @section Scripts {

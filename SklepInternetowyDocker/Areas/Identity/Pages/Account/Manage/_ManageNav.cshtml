@@ -1,0 +1,30 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    var activePage = ViewData["ActivePage"] as string;
+    var hasExternalLogins = (bool)(ViewData["ManageNav.HasExternalLogins"] ?? false);
+    var pages = new[]
+    {
+        (Id: "profile", Page: "Index", Label: "Profil"),
+        (Id: "email", Page: "Email", Label: "Adres e-mail"),
+        (Id: "change-password", Page: "ChangePassword", Label: "Hasło"),
+        (Id: "external-login", Page: "ExternalLogins", Label: "Logowanie zewnętrzne"),
+        (Id: "two-factor", Page: "TwoFactorAuthentication", Label: "Uwierzytelnianie dwuskładnikowe"),
+        (Id: "personal-data", Page: "PersonalData", Label: "Dane osobowe")
+    };
+}
+
+<ul class="nav nav-pills flex-column">
+    @foreach (var entry in pages)
+    {
+        if (entry.Page == "ExternalLogins" && !hasExternalLogins)
+        {
+            continue;
+        }
+
+        var isActive = string.Equals(activePage, entry.Page, StringComparison.OrdinalIgnoreCase);
+        <li class="nav-item" id="@(entry.Page == "ExternalLogins" ? "external-logins" : null)">
+            <a class="nav-link @(isActive ? "active" : null)" id="@entry.Id"
+               asp-page="@($"./{entry.Page}")" aria-current="@(isActive ? "page" : null)">@T[entry.Label]</a>
+        </li>
+    }
+</ul>

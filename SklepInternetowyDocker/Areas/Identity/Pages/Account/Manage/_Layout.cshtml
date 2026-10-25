@@ -1,0 +1,23 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = ViewData["ParentLayout"] as string ?? "/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="h3">@T["Zarządzanie kontem"]</h1>
+
+<div>
+    <h2 class="h5">@T["Zmień ustawienia konta"]</h2>
+    <hr />
+    <div class="row g-4">
+        <div class="col-lg-3">
+            <partial name="_ManageNav" />
+        </div>
+        <div class="col-lg-9">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await RenderSectionAsync("Scripts", required: false)
+}

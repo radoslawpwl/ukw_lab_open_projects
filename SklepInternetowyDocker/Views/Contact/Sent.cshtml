@@ -3,19 +3,19 @@
     var isTestDelivery = ViewData["IsTestDelivery"] is true;
 }
 
-<p class="service-category">RP-bit / Kontakt</p>
-<h1>@(isTestDelivery ? "Wiadomość w skrzynce testowej" : "Wiadomość przekazana do wysyłki")</h1>
+<p class="service-category">RP-bit / @T["Kontakt"]</p>
+<h1>@T[isTestDelivery ? "Wiadomość w skrzynce testowej" : "Wiadomość przekazana do wysyłki"]</h1>
 <div class="alert alert-success my-4" role="status">
     @if (isTestDelivery)
     {
-        <span>Mailpit przyjął wiadomość lokalnie. Nie została wysłana na prawdziwą skrzynkę RP-bit.</span>
+        <span>@T["Mailpit przyjął wiadomość lokalnie. Nie została wysłana na prawdziwą skrzynkę RP-bit."]</span>
     }
     else
     {
-        <span>Serwer pocztowy przyjął Twoją wiadomość. Odpowiedź otrzymasz na podany adres e-mail.</span>
+        <span>@T["Serwer pocztowy przyjął Twoją wiadomość. Odpowiedź otrzymasz na podany adres e-mail."]</span>
     }
 </div>
 <div class="d-flex flex-wrap gap-3">
-    <a class="btn btn-primary" asp-controller="Products" asp-action="Index">Wróć do usług</a>
-    <a class="btn btn-outline-secondary" asp-controller="Cart" asp-action="Index">Koszyk usług</a>
+    <a class="btn btn-primary" asp-controller="Products" asp-action="Index">@T["Wróć do usług"]</a>
+    <a class="btn btn-outline-secondary" asp-controller="Cart" asp-action="Index">@T["Koszyk usług"]</a>
 </div>

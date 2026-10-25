@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="pl">
+<html lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] | RP-bit</title>
+    <title>@T[ViewData["Title"]?.ToString() ?? "RP-bit"] | RP-bit</title>
     <meta name="theme-color" content="#08080a" />
     <link rel="icon" type="image/png" href="~/rp-bit-favicon.png" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,32 +16,39 @@
 </head>
 <body>
     <header class="site-header">
-        <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Menu główne">
+        <nav class="navbar navbar-expand-lg navbar-dark" aria-label="@T["Menu główne"]">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" aria-label="RP-bit — sklep z usługami IT">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" aria-label="@T["RP-bit — sklep z usługami IT"]">
                     <img src="~/rp-bit-logo.png" asp-append-version="true" width="192" height="32" alt="RP-bit" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation" aria-controls="main-navigation"
-                        aria-expanded="false" aria-label="Rozwiń menu">
+                        aria-expanded="false" aria-label="@T["Rozwiń menu"]">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div id="main-navigation" class="navbar-collapse collapse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Usługi</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">@T["Usługi"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="https://www.rp-bit.com/" target="_blank" rel="noopener noreferrer">O RP-bit</a>
+                            <a class="nav-link text-dark" href="https://www.rp-bit.com/" target="_blank" rel="noopener noreferrer">@T["O RP-bit"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Kontakt</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">@T["Kontakt"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Koszyk usług</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">@T["Koszyk usług"]</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
+                <form class="language-switch" asp-area="" asp-controller="Language" asp-action="Change" method="post" aria-label="@T["Język"]">
+                    <input type="hidden" name="returnUrl" value="@($"{Context.Request.PathBase}{Context.Request.Path}{Context.Request.QueryString}")" />
+                    <button type="submit" name="culture" value="pl" lang="pl" title="Polski"
+                            aria-pressed="@(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "pl" ? "true" : "false")">PL</button>
+                    <button type="submit" name="culture" value="en" lang="en" title="English"
+                            aria-pressed="@(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "en" ? "true" : "false")">EN</button>
+                </form>
             </div>
         </nav>
     </header>
@@ -58,8 +65,8 @@
                 <span>Cybersecurity &middot; Infrastructure &middot; Private AI</span>
             </div>
             <div class="footer-links">
-                <a asp-area="" asp-controller="Contact" asp-action="Index">Formularz kontaktowy</a>
-                <a asp-area="" asp-controller="Home" asp-action="Privacy">Prywatność</a>
+                <a asp-area="" asp-controller="Contact" asp-action="Index">@T["Formularz kontaktowy"]</a>
+                <a asp-area="" asp-controller="Home" asp-action="Privacy">@T["Prywatność"]</a>
                 <span>&copy; @DateTime.UtcNow.Year RP-bit</span>
             </div>
         </div>

@@ -5,30 +5,30 @@
     ViewData["Title"] = "Usługi IT i bezpieczeństwo";
     var categories = ViewBag.Categories as IEnumerable<Category> ?? [];
     int? selectedCategoryId = ViewBag.SelectedCategoryId;
-    var currency = System.Globalization.CultureInfo.GetCultureInfo("pl-PL");
+    var currency = CultureInfo.CurrentCulture;
 }
 
 <section class="catalog-intro" aria-labelledby="catalog-heading">
     <p class="eyebrow">SECURITY. INFRASTRUCTURE. PRIVATE AI.</p>
-    <h1 id="catalog-heading">RP-bit <span>/ Usługi IT</span></h1>
-    <p>Audyty, testy bezpieczeństwa i prywatna AI. Wybierz pakiet z określonym zakresem lub porozmawiajmy o Twoim projekcie.</p>
+    <h1 id="catalog-heading">RP-bit <span>/ @T["Usługi IT"]</span></h1>
+    <p>@T["Audyty, testy bezpieczeństwa i prywatna AI. Wybierz pakiet z określonym zakresem lub porozmawiajmy o Twoim projekcie."]</p>
 </section>
 
 <div class="catalog-toolbar">
-    <nav aria-label="Kategorie usług">
+    <nav aria-label="@T["Kategorie usług"]">
         <a class="btn @(selectedCategoryId is null ? "btn-primary" : "btn-outline-primary")"
-           asp-action="Index" aria-current="@(selectedCategoryId is null ? "page" : null)">Wszystkie usługi</a>
+           asp-action="Index" aria-current="@(selectedCategoryId is null ? "page" : null)">@T["Wszystkie usługi"]</a>
 
         @foreach (var category in categories)
         {
             <a class="btn @(selectedCategoryId == category.Id ? "btn-primary" : "btn-outline-primary")"
                asp-action="Index" asp-route-categoryId="@category.Id"
                aria-current="@(selectedCategoryId == category.Id ? "page" : null)">
-                @category.Name
+                @T[category.Name]
             </a>
         }
     </nav>
-    <span class="catalog-count">Pakiety: @Model.Count() &middot; PLN netto</span>
+    <span class="catalog-count">@T["Pakiety"]: @Model.Count() &middot; PLN @T["netto"]</span>
 </div>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -38,20 +38,20 @@
             <article class="card service-card h-100">
                 @if (!string.IsNullOrWhiteSpace(product.ImageUrl))
                 {
-                    <a class="service-card-image" asp-action="Details" asp-route-id="@product.Id" aria-label="Zakres: @product.Name">
+                    <a class="service-card-image" asp-action="Details" asp-route-id="@product.Id" aria-label="@T["Zakres: {0}", T[product.Name]]">
                         <img src="@product.ImageUrl" alt="" width="600" height="300" loading="lazy" />
                     </a>
                 }
                 <div class="card-body">
-                    <p class="service-category">@product.Category?.Name</p>
-                    <h2><a asp-action="Details" asp-route-id="@product.Id">@product.Name</a></h2>
-                    <p class="service-summary">@product.Description</p>
-                    <p class="service-price">@product.Price.ToString("N2", currency) zł <span>netto / pakiet</span></p>
+                    <p class="service-category">@T[product.Category?.Name ?? ""]</p>
+                    <h2><a asp-action="Details" asp-route-id="@product.Id">@T[product.Name]</a></h2>
+                    <p class="service-summary">@T[product.Description]</p>
+                    <p class="service-price">@product.Price.ToString("N2", currency) PLN <span>@T["netto / pakiet"]</span></p>
                     <div class="service-actions">
-                        <a class="btn btn-outline-secondary" asp-action="Details" asp-route-id="@product.Id">Zakres pakietu</a>
+                        <a class="btn btn-outline-secondary" asp-action="Details" asp-route-id="@product.Id">@T["Zakres pakietu"]</a>
                         <form asp-controller="Cart" asp-action="Add" method="post">
                             <input type="hidden" name="productId" value="@product.Id" />
-                            <button class="btn btn-primary" type="submit" aria-label="Dodaj usługę: @product.Name">Dodaj usługę</button>
+                            <button class="btn btn-primary" type="submit" aria-label="@T["Dodaj usługę: {0}", T[product.Name]]">@T["Dodaj usługę"]</button>
                         </form>
                     </div>
                 </div>
@@ -62,20 +62,18 @@
 
 @if (!Model.Any())
 {
-    <div class="alert alert-info">W tej kategorii nie ma obecnie dostępnych usług.</div>
+    <div class="alert alert-info">@T["W tej kategorii nie ma obecnie dostępnych usług."]</div>
 }
 
-<aside class="pricing-note" aria-label="Warunki wyceny">
-    <strong>Przejrzysty zakres, indywidualna wycena.</strong>
-    Ceny są orientacyjnymi propozycjami netto, przed ewentualnym VAT. Ostateczna cena i termin wymagają potwierdzenia zakresu.
-    Sprzęt, licencje i koszty chmury nie są wliczone, o ile opis pakietu nie stanowi inaczej.
-    Testy bezpieczeństwa wymagają pisemnej zgody właściciela systemu.
+<aside class="pricing-note" aria-label="@T["Warunki wyceny"]">
+    <strong>@T["Przejrzysty zakres, indywidualna wycena."]</strong>
+    @T["Ceny są orientacyjnymi propozycjami netto, przed ewentualnym VAT. Ostateczna cena i termin wymagają potwierdzenia zakresu. Sprzęt, licencje i koszty chmury nie są wliczone, o ile opis pakietu nie stanowi inaczej. Testy bezpieczeństwa wymagają pisemnej zgody właściciela systemu."]
 </aside>
 
 <section class="consultation-strip" aria-labelledby="consultation-heading">
     <div>
-        <h2 id="consultation-heading">Twój projekt nie mieści się w pakiecie?</h2>
-        <p>Ustalmy zakres, priorytety i sposób realizacji.</p>
+        <h2 id="consultation-heading">@T["Twój projekt nie mieści się w pakiecie?"]</h2>
+        <p>@T["Ustalmy zakres, priorytety i sposób realizacji."]</p>
     </div>
-    <a class="btn btn-outline-primary" asp-controller="Contact" asp-action="Index">Porozmawiajmy o projekcie</a>
+    <a class="btn btn-outline-primary" asp-controller="Contact" asp-action="Index">@T["Porozmawiajmy o projekcie"]</a>
 </section>

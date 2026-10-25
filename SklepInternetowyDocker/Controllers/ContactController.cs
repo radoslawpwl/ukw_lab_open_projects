@@ -2,6 +2,7 @@ using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using MimeKit;
 using SklepInternetowyDocker.Data;
 using SklepInternetowyDocker.Extensions;
@@ -14,6 +15,7 @@ namespace SklepInternetowyDocker.Controllers;
 public class ContactController(
     ApplicationDbContext dbContext,
     IContactEmailSender emailSender,
+    IStringLocalizer<SharedResource> text,
     ILogger<ContactController> logger) : Controller
 {
     [HttpGet]
@@ -21,7 +23,7 @@ public class ContactController(
         CancellationToken cancellationToken = default)
     {
         var model = new ContactViewModel();
-        var currency = CultureInfo.GetCultureInfo("pl-PL");
+        var currency = CultureInfo.CurrentCulture;
 
         if (fromCart)
         {
@@ -32,10 +34,10 @@ public class ContactController(
             }
 
             model.Topic = ContactTopic.Service;
-            model.Message = "Dzień dobry, proszę o potwierdzenie zakresu i terminu realizacji usług:\n\n"
+            model.Message = text["Dzień dobry, proszę o potwierdzenie zakresu i terminu realizacji usług:"] + "\n\n"
                 + string.Join("\n", cart.Select(item =>
-                    $"{item.ProductName} - {item.Quantity} pakiet(y), {item.Total.ToString("N2", currency)} zł netto"))
-                + $"\n\nSuma orientacyjna: {cart.Sum(item => item.Total).ToString("N2", currency)} zł netto.";
+                    $"{text[item.ProductName]} - {item.Quantity} {text["pakiet(y)"]}, {item.Total.ToString("N2", currency)} PLN {text["netto"]}"))
+                + $"\n\n{text["Suma orientacyjna"]}: {cart.Sum(item => item.Total).ToString("N2", currency)} PLN {text["netto"]}.";
         }
         else if (productId.HasValue)
         {
@@ -47,8 +49,8 @@ public class ContactController(
             }
 
             model.Topic = ContactTopic.Service;
-            model.Message = $"Dzień dobry, proszę o potwierdzenie zakresu i terminu usługi: {product.Name}.\n\n"
-                + $"Cena orientacyjna: {product.Price.ToString("N2", currency)} zł netto / pakiet.";
+            model.Message = text["Dzień dobry, proszę o potwierdzenie zakresu i terminu usługi: {0}.", text[product.Name]] + "\n\n"
+                + $"{text["Cena orientacyjna"]}: {product.Price.ToString("N2", currency)} PLN {text["netto / pakiet"]}.";
         }
 
         PrepareView();
@@ -70,7 +72,7 @@ public class ContactController(
         if (!MailboxAddress.TryParse(model.Email, out var replyTo)
             || !string.Equals(replyTo.Address, model.Email, StringComparison.Ordinal))
         {
-            ModelState.AddModelError(nameof(model.Email), "Podaj pojedynczy, poprawny adres e-mail.");
+            ModelState.AddModelError(nameof(model.Email), text["Podaj pojedynczy, poprawny adres e-mail."]);
             return View(model);
         }
 
@@ -90,7 +92,7 @@ public class ContactController(
             logger.LogError("Contact SMTP failed ({ExceptionType}).", exception.GetType().Name);
             Response.StatusCode = StatusCodes.Status503ServiceUnavailable;
             ModelState.AddModelError(string.Empty,
-                "Nie udało się potwierdzić wysyłki wiadomości. Treść pozostała w formularzu. Spróbuj ponownie później.");
+                text["Nie udało się potwierdzić wysyłki wiadomości. Treść pozostała w formularzu. Spróbuj ponownie później."]);
             return View(model);
         }
 

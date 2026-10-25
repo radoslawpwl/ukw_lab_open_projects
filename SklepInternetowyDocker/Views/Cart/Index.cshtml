@@ -3,24 +3,24 @@
 @{
     ViewData["Title"] = "Koszyk usług";
     var total = Model.Sum(item => item.Total);
-    var currency = System.Globalization.CultureInfo.GetCultureInfo("pl-PL");
+    var currency = CultureInfo.CurrentCulture;
 }
 
-<p class="eyebrow">RP-bit / WYBRANE PAKIETY</p>
-<h1>Koszyk usług</h1>
+<p class="eyebrow">RP-bit / @T["Pakiety"]</p>
+<h1>@T["Koszyk usług"]</h1>
 
 @if (TempData["Message"] is string message)
 {
-    <div class="alert alert-success">@message</div>
+    <div class="alert alert-success">@T[message]</div>
 }
 
 @if (Model.Count == 0)
 {
-    <p class="text-muted mb-4">Nie masz jeszcze wybranych usług.</p>
+    <p class="text-muted mb-4">@T["Nie masz jeszcze wybranych usług."]</p>
     <a class="btn btn-primary"
        asp-controller="Products"
        asp-action="Index">
-        Przeglądaj usługi
+        @T["Przeglądaj usługi"]
     </a>
 }
 else
@@ -28,10 +28,10 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Usługa</th>
-                <th scope="col">Cena netto</th>
-                <th scope="col">Pakiety</th>
-                <th scope="col">Razem netto</th>
+                <th scope="col">@T["Usługa"]</th>
+                <th scope="col">@T["Cena netto"]</th>
+                <th scope="col">@T["Pakiety"]</th>
+                <th scope="col">@T["Razem netto"]</th>
                 <th></th>
             </tr>
         </thead>
@@ -39,17 +39,17 @@ else
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.ProductName</td>
-                    <td>@item.UnitPrice.ToString("N2", currency) zł</td>
+                    <td>@T[item.ProductName]</td>
+                    <td>@item.UnitPrice.ToString("N2", currency) PLN</td>
                     <td>@item.Quantity</td>
-                    <td>@item.Total.ToString("N2", currency) zł</td>
+                    <td>@item.Total.ToString("N2", currency) PLN</td>
                     <td>
                         <form asp-action="Remove" method="post">
                             <input type="hidden"
                                    name="productId"
                                    value="@item.ProductId">
                             <button class="btn btn-sm btn-danger" type="submit">
-                                Usuń
+                                @T["Usuń"]
                             </button>
                         </form>
                     </td>
@@ -58,22 +58,21 @@ else
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="3">Suma netto</th>
-                <th>@total.ToString("N2", currency) zł</th>
+                <th colspan="3">@T["Suma netto"]</th>
+                <th>@total.ToString("N2", currency) PLN</th>
                 <th></th>
             </tr>
         </tfoot>
     </table>
 
     <div class="service-detail-actions">
-        <a class="btn btn-primary" asp-controller="Contact" asp-action="Index" asp-route-fromCart="true">Zapytaj o realizację</a>
-        <a class="btn btn-outline-secondary" asp-controller="Products" asp-action="Index">Dodaj kolejną usługę</a>
+        <a class="btn btn-primary" asp-controller="Contact" asp-action="Index" asp-route-fromCart="true">@T["Zapytaj o realizację"]</a>
+        <a class="btn btn-outline-secondary" asp-controller="Products" asp-action="Index">@T["Dodaj kolejną usługę"]</a>
         <form asp-action="Clear" method="post">
-            <button class="btn btn-outline-danger" type="submit">Wyczyść koszyk</button>
+            <button class="btn btn-outline-danger" type="submit">@T["Wyczyść koszyk"]</button>
         </form>
     </div>
     <p class="pricing-note">
-        Koszyk służy do przygotowania zapytania, nie stanowi złożenia zamówienia ani płatności.
-        Suma jest orientacyjna i nie zawiera ewentualnego VAT. Zakres, termin i ostateczna wycena wymagają potwierdzenia.
+        @T["Koszyk służy do przygotowania zapytania, nie stanowi złożenia zamówienia ani płatności. Suma jest orientacyjna i nie zawiera ewentualnego VAT. Zakres, termin i ostateczna wycena wymagają potwierdzenia."]
     </p>
 }

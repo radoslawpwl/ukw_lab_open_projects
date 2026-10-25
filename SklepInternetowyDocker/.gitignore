@@ -11,4 +11,5 @@ app.db
 *.sql
 *.dump
 README.md
+DEPLOYMENT_FAILOVER.md
 certs/
