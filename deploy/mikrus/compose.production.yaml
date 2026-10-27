@@ -1,0 +1,171 @@
+name: rpbit
+
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+x-app-environment: &app-environment
+  ASPNETCORE_ENVIRONMENT: Production
+  ASPNETCORE_URLS: http://+:8080
+  AllowedHosts: ${PUBLIC_HOST:?Ustaw PUBLIC_HOST}
+  Security__PublicOrigin: https://${PUBLIC_HOST:?Ustaw PUBLIC_HOST}
+  Security__DataProtectionPath: /var/lib/rpbit/keys
+  ReverseProxy__KnownProxies__0: 172.30.50.10
+  Database__Initialize: "false"
+  ContactMail__Host: ${CONTACT_SMTP_HOST:?Ustaw CONTACT_SMTP_HOST}
+  ContactMail__Port: ${CONTACT_SMTP_PORT:-587}
+  ContactMail__Security: ${CONTACT_SMTP_SECURITY:-StartTls}
+  ContactMail__Username: ${CONTACT_SMTP_USERNAME:?Ustaw CONTACT_SMTP_USERNAME}
+  ContactMail__Password: ${CONTACT_SMTP_PASSWORD:?Ustaw CONTACT_SMTP_PASSWORD}
+  ContactMail__SenderAddress: ${CONTACT_SMTP_FROM:?Ustaw CONTACT_SMTP_FROM}
+  ContactMail__RecipientAddress: ${CONTACT_SMTP_TO:?Ustaw CONTACT_SMTP_TO}
+  ContactMail__TestMode: "false"
+
+x-app: &app
+  image: ${APP_IMAGE:?Ustaw APP_IMAGE}
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  tmpfs:
+    - /tmp:rw,noexec,nosuid,size=32m
+  volumes:
+    - ./keys:/var/lib/rpbit/keys
+  mem_limit: 512m
+  cpus: 1.0
+  pids_limit: 128
+  logging: *logging
+
+services:
+  db:
+    image: ${POSTGRES_IMAGE:?Ustaw POSTGRES_IMAGE}
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?Ustaw POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER:?Ustaw POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Ustaw POSTGRES_PASSWORD}
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+    command: [postgres, -c, max_connections=40, -c, shared_buffers=128MB]
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    pids_limit: 128
+    logging: *logging
+    networks: [database]
+
+  db-init:
+    <<: *app
+    profiles: [tools]
+    restart: "no"
+    command: [--initialize-database]
+    environment:
+      <<: *app-environment
+      ConnectionStrings__DefaultConnection: >-
+        Host=db;Port=5432;Database=${POSTGRES_DB:?Ustaw POSTGRES_DB};Username=rpbit_migrator;Password=${MIGRATION_DB_PASSWORD:-};Maximum Pool Size=2
+    depends_on:
+      db:
+        condition: service_healthy
+    networks: [database]
+
+  app:
+    <<: *app
+    restart: unless-stopped
+    environment:
+      <<: *app-environment
+      ConnectionStrings__DefaultConnection: >-
+        Host=db;Port=5432;Database=${POSTGRES_DB:?Ustaw POSTGRES_DB};Username=rpbit_app;Password=${APP_DB_PASSWORD:?Ustaw APP_DB_PASSWORD};Maximum Pool Size=20
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, bash, -c, 'exec 3<>/dev/tcp/127.0.0.1/8080']
+      interval: 10s
+      timeout: 3s
+      retries: 12
+      start_period: 20s
+    stop_grace_period: 30s
+    networks:
+      database: {}
+      smtp: {}
+      application:
+        ipv4_address: 172.30.50.20
+
+  nginx:
+    image: ${NGINX_IMAGE:?Ustaw NGINX_IMAGE}
+    restart: unless-stopped
+    user: "101:101"
+    entrypoint: [nginx]
+    command: [-g, 'daemon off;']
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m,mode=1777
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "127.0.0.1:18080:8080"
+    environment:
+      PUBLIC_HOST: ${PUBLIC_HOST:?Ustaw PUBLIC_HOST}
+    depends_on:
+      app:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD-SHELL, 'wget -q --spider --header="Host: $${PUBLIC_HOST}" http://127.0.0.1:8080/Products']
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    mem_limit: 64m
+    pids_limit: 64
+    logging: *logging
+    networks:
+      application:
+        ipv4_address: 172.30.50.10
+      edge:
+        ipv4_address: 172.30.51.10
+
+  cloudflared:
+    image: ${CLOUDFLARED_IMAGE:?Ustaw CLOUDFLARED_IMAGE}
+    restart: unless-stopped
+    user: "65532:65532"
+    command: [tunnel, --no-autoupdate, --metrics, "0.0.0.0:2000", run, --token-file, /run/secrets/cloudflared.token]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    volumes:
+      - ./cloudflared.token:/run/secrets/cloudflared.token:ro
+    depends_on:
+      nginx:
+        condition: service_healthy
+    mem_limit: 128m
+    pids_limit: 64
+    logging: *logging
+    networks:
+      edge:
+        ipv4_address: 172.30.51.11
+
+volumes:
+  postgres_data:
+
+networks:
+  database:
+    internal: true
+  application:
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.30.50.0/24
+  smtp: {}
+  edge:
+    ipam:
+      config:
+        - subnet: 172.30.51.0/24

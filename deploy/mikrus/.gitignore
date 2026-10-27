@@ -1,0 +1,8 @@
+.env*
+!.env.production.example
+!.env.migrations.example
+cloudflared.token
+keys/
+backups/
+*.dump
+*.tar.gz
