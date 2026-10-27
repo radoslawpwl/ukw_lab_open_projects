@@ -1,0 +1,33 @@
+name: Security Regression
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Create Disposable Local TLS Certificate
+        run: |
+          mkdir -p SklepInternetowyDocker/certs
+          openssl req -x509 -newkey rsa:2048 -nodes -days 1 \
+            -keyout SklepInternetowyDocker/certs/localhost-key.pem \
+            -out SklepInternetowyDocker/certs/localhost.pem \
+            -subj '/CN=localhost' -addext 'subjectAltName=DNS:localhost'
+          chmod 644 SklepInternetowyDocker/certs/localhost-key.pem
+          sudo install -m 644 SklepInternetowyDocker/certs/localhost.pem /usr/local/share/ca-certificates/rpbit-test.crt
+          sudo update-ca-certificates
+      - name: Build With NuGet Audit And Test Security
+        run: python3 SklepInternetowyDocker/tests/security_smoke.py
+      - name: Remove Disposable Certificates
+        if: always()
+        run: rm -f SklepInternetowyDocker/certs/localhost.pem SklepInternetowyDocker/certs/localhost-key.pem

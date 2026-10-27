@@ -28,10 +28,12 @@ public class LoginModel(
     {
         [Required(ErrorMessage = "Podaj adres e-mail.")]
         [EmailAddress(ErrorMessage = "Podaj poprawny adres e-mail.")]
+        [StringLength(254)]
         [Display(Name = "Adres e-mail")]
         public string Email { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Podaj hasło.")]
+        [StringLength(128)]
         [DataType(DataType.Password)]
         [Display(Name = "Hasło")]
         public string Password { get; set; } = string.Empty;
@@ -60,7 +62,7 @@ public class LoginModel(
         }
 
         var result = await signInManager.PasswordSignInAsync(
-            Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+            Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
         if (result.Succeeded)
         {
             logger.LogInformation("User logged in.");
@@ -75,10 +77,9 @@ public class LoginModel(
         if (result.IsLockedOut)
         {
             logger.LogWarning("User account locked out.");
-            ModelState.AddModelError(string.Empty, text["Konto jest zablokowane. Spróbuj ponownie później."]);
-            return Page();
         }
 
+        logger.LogWarning("Unsuccessful sign-in attempt.");
         ModelState.AddModelError(string.Empty,
             text["Nie udało się zalogować. Sprawdź adres e-mail, hasło i potwierdzenie konta."]);
         return Page();

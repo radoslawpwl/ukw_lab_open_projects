@@ -65,6 +65,20 @@
     <div class="alert alert-info">@T["W tej kategorii nie ma obecnie dostępnych usług."]</div>
 }
 
+@if (ViewBag.Page > 1 || ViewBag.HasNextPage)
+{
+    <nav class="d-flex justify-content-between my-4" aria-label="@T["Strony katalogu"]">
+        @if (ViewBag.Page > 1)
+        {
+            <a asp-action="Index" asp-route-categoryId="@selectedCategoryId" asp-route-page="@(ViewBag.Page - 1)" rel="prev">@T["Poprzednia strona"]</a>
+        }
+        @if (ViewBag.HasNextPage)
+        {
+            <a asp-action="Index" asp-route-categoryId="@selectedCategoryId" asp-route-page="@(ViewBag.Page + 1)" rel="next">@T["Następna strona"]</a>
+        }
+    </nav>
+}
+
 <aside class="pricing-note" aria-label="@T["Warunki wyceny"]">
     <strong>@T["Przejrzysty zakres, indywidualna wycena."]</strong>
     @T["Ceny są orientacyjnymi propozycjami netto, przed ewentualnym VAT. Ostateczna cena i termin wymagają potwierdzenia zakresu. Sprzęt, licencje i koszty chmury nie są wliczone, o ile opis pakietu nie stanowi inaczej. Testy bezpieczeństwa wymagają pisemnej zgody właściciela systemu."]

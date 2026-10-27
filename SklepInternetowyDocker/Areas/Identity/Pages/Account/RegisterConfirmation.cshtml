@@ -1,5 +1,4 @@
 @page
-@model Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.RegisterConfirmationModel
 @{
     ViewData["Title"] = "Potwierdź adres e-mail";
 }
@@ -8,17 +7,7 @@
     <section class="col-md-8 col-lg-6">
         <p class="service-category">RP-bit / @T["Konto klienta"]</p>
         <h1 class="mb-4">@T["Potwierdź adres e-mail"]</h1>
-        @if (Model.DisplayConfirmAccountLink)
-        {
-            <div class="alert alert-warning" role="status">
-                @T["Poczta do potwierdzania kont nie jest skonfigurowana. Wiadomość nie została wysłana."]
-            </div>
-            <a id="confirm-link" class="btn btn-primary" href="@Model.EmailConfirmationUrl">@T["Potwierdź konto testowe"]</a>
-        }
-        else
-        {
-            <p>@T["Na adres {0} wysłaliśmy wiadomość z odnośnikiem do potwierdzenia konta.", Model.Email]</p>
-        }
+        <p>@T["Jeśli rejestracja się powiodła, otrzymasz wiadomość z odnośnikiem do potwierdzenia konta. Sprawdź skrzynkę pocztową."]</p>
         <p class="mt-4"><a asp-page="./Login">@T["Przejdź do logowania"]</a></p>
     </section>
 </div>

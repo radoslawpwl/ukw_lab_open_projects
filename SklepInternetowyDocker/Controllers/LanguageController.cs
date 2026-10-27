@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace SklepInternetowyDocker.Controllers;
 
+[EnableRateLimiting("cart")]
 public class LanguageController : Controller
 {
     [HttpPost]
@@ -29,7 +31,7 @@ public class LanguageController : Controller
                 Expires = DateTimeOffset.UtcNow.AddYears(1),
                 HttpOnly = true,
                 IsEssential = true,
-                Secure = Request.IsHttps,
+                Secure = true,
                 SameSite = SameSiteMode.Lax,
                 Path = Request.PathBase.HasValue ? Request.PathBase.Value : "/"
             });

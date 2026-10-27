@@ -106,7 +106,7 @@
 
 @section Scripts {
     <partial name="/Views/Shared/_ValidationScriptsPartial.cshtml" />
-    <script>
+    <script nonce="@HttpContext.Items["CspNonce"]">
         const invoiceUsesShippingAddress = document.getElementById("Input_InvoiceUsesShippingAddress");
         const invoiceAddress = document.getElementById("invoice-address");
         invoiceUsesShippingAddress.addEventListener("change", () => {

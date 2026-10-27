@@ -166,9 +166,9 @@
                     <caption class="text-muted">Standard ASP.NET Core cookies; some names have variable suffixes.</caption>
                     <thead><tr><th scope="col">Cookie</th><th scope="col">Purpose</th><th scope="col">Lifetime</th></tr></thead>
                     <tbody>
-                        <tr><td><code>.AspNetCore.Identity.Application</code></td><td>Signed-in session.</td><td>Browser session; persistent sign-in defaults to 14 days, potentially renewed with activity.</td></tr>
-                        <tr><td><code>.AspNetCore.Session</code></td><td>Server-side basket association.</td><td>Session cookie; basket data expires after 30 minutes of inactivity independently.</td></tr>
-                        <tr><td><code>.AspNetCore.Antiforgery.*</code></td><td>Cross-site request protection.</td><td>Usually the browser session.</td></tr>
+                        <tr><td><code>__Host-RpBit.Auth</code></td><td>Signed-in session.</td><td>Browser session, or up to 8 hours with persistent sign-in. Authentication expires within 8 hours without automatic renewal.</td></tr>
+                        <tr><td><code>__Host-RpBit.Session</code></td><td>Server-side basket association.</td><td>Session cookie; basket data expires after 30 minutes of inactivity independently.</td></tr>
+                        <tr><td><code>__Host-RpBit.Antiforgery</code></td><td>Cross-site request protection.</td><td>Usually the browser session.</td></tr>
                         <tr><td><code>.AspNetCore.Culture</code></td><td>PL/EN preference.</td><td>Up to one year after the last language change or until deleted.</td></tr>
                         <tr><td><code>.AspNetCore.Mvc.CookieTempDataProvider</code></td><td>Short-lived operation messages.</td><td>Until read or session end, depending on usage.</td></tr>
                     </tbody>

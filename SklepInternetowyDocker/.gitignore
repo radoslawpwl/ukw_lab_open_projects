@@ -6,6 +6,16 @@
 *.user
 *.suo
 .env
+.env.*
+!.env.example
+.keys/
+keys/
+*.pem
+*.key
+*.pfx
+*.p12
+*.sqlite*
+__pycache__/
 publish/
 app.db
 *.sql

@@ -1,7 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
-using MailKit.Net.Smtp;
-using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using SklepInternetowyDocker.Models;
@@ -10,26 +8,13 @@ namespace SklepInternetowyDocker.Services;
 
 public class SmtpContactEmailSender(
     IOptions<ContactMailOptions> mailOptions,
-    IWebHostEnvironment environment) : IContactEmailSender
+    SmtpMailTransport transport) : IContactEmailSender
 {
     private readonly ContactMailOptions options = mailOptions.Value;
 
-    private SecureSocketOptions? Security => options.Security switch
-    {
-        "StartTls" => SecureSocketOptions.StartTls,
-        "SslOnConnect" => SecureSocketOptions.SslOnConnect,
-        "None" when environment.IsDevelopment() => SecureSocketOptions.None,
-        _ => null
-    };
-
     public bool IsTestDelivery => options.TestMode;
 
-    public bool IsConfigured => !string.IsNullOrWhiteSpace(options.Host)
-        && options.Port is > 0 and <= 65535
-        && Security.HasValue
-        && (!IsTestDelivery || environment.IsDevelopment())
-        && string.IsNullOrEmpty(options.Username) == string.IsNullOrEmpty(options.Password)
-        && MailboxAddress.TryParse(options.SenderAddress, out _)
+    public bool IsConfigured => transport.IsConfigured
         && MailboxAddress.TryParse(options.RecipientAddress, out _);
 
     public async Task SendAsync(ContactViewModel contact, CancellationToken cancellationToken)
@@ -52,15 +37,6 @@ public class SmtpContactEmailSender(
             Text = $"Nadawca: {contact.Name.Trim()}\nAdres e-mail: {contact.Email}\nTemat: {topic}\n\n{contact.Message.Trim()}"
         };
 
-        using var timeout = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-        timeout.CancelAfter(TimeSpan.FromSeconds(30));
-        using var client = new SmtpClient { Timeout = 15000 };
-        await client.ConnectAsync(options.Host, options.Port, Security!.Value, timeout.Token);
-        if (!string.IsNullOrEmpty(options.Username))
-        {
-            await client.AuthenticateAsync(options.Username, options.Password, timeout.Token);
-        }
-
-        await client.SendAsync(message, timeout.Token);
+        await transport.SendAsync(message, cancellationToken);
     }
 }

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using SklepInternetowyDocker.Data;
 using SklepInternetowyDocker.Extensions;
@@ -6,6 +7,7 @@ using SklepInternetowyDocker.Models;
 
 namespace SklepInternetowyDocker.Controllers;
 
+[EnableRateLimiting("cart")]
 public class CartController(ApplicationDbContext context) : Controller
 {
     private const string CartKey = "Cart";
@@ -29,6 +31,11 @@ public class CartController(ApplicationDbContext context) : Controller
 
         var cart = GetCart();
         var item = cart.FirstOrDefault(entry => entry.ProductId == product.Id);
+        if ((item is null && cart.Count >= 20) || item?.Quantity >= 20)
+        {
+            TempData["Message"] = "Osiągnięto limit koszyka: 20 usług i 20 pakietów każdej usługi.";
+            return RedirectToAction(nameof(Index));
+        }
 
         if (item is null)
         {

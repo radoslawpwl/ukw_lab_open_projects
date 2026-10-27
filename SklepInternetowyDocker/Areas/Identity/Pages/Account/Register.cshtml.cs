@@ -28,16 +28,18 @@ public class RegisterModel(
     {
         [Required(ErrorMessage = "Podaj adres e-mail.")]
         [EmailAddress(ErrorMessage = "Podaj poprawny adres e-mail.")]
+        [StringLength(254)]
         [Display(Name = "Adres e-mail")]
         public string Email { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Podaj hasło.")]
-        [StringLength(100, MinimumLength = 6, ErrorMessage = "Hasło musi mieć od {2} do {1} znaków.")]
+        [StringLength(128, MinimumLength = 15, ErrorMessage = "Hasło musi mieć od {2} do {1} znaków.")]
         [DataType(DataType.Password)]
         [Display(Name = "Hasło")]
         public string Password { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Powtórz hasło.")]
+        [StringLength(128)]
         [DataType(DataType.Password)]
         [Display(Name = "Powtórz hasło")]
         [Compare(nameof(Password), ErrorMessage = "Podane hasła nie są takie same.")]
@@ -61,6 +63,11 @@ public class RegisterModel(
         var result = await userManager.CreateAsync(user, Input.Password);
         if (!result.Succeeded)
         {
+            if (result.Errors.Any(error => error.Code is "DuplicateEmail" or "DuplicateUserName"))
+            {
+                return RedirectToPage("./RegisterConfirmation", new { email = Input.Email, returnUrl = ReturnUrl });
+            }
+
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError(string.Empty, error.Description);

@@ -243,4 +243,10 @@
   <data name="Your authenticator app has been verified."><value>Your authenticator app has been verified.</value></data>
   <data name="Your authenticator app key has been reset, you will need to configure your authenticator app using the new key."><value>Your authenticator app key has been reset. Configure your app using the new key.</value></data>
   <data name="The current browser has been forgotten. When you login again from this browser you will be prompted for your 2fa code."><value>This browser has been forgotten. Your next sign-in will require a 2FA code.</value></data>
+  <data name="Jeśli rejestracja się powiodła, otrzymasz wiadomość z odnośnikiem do potwierdzenia konta. Sprawdź skrzynkę pocztową."><value>If registration was successful, you will receive an account confirmation link. Please check your inbox.</value></data>
+  <data name="Zbyt wiele prób. Spróbuj ponownie za 10 minut."><value>Too many attempts. Please try again in 10 minutes.</value></data>
+  <data name="Osiągnięto limit koszyka: 20 usług i 20 pakietów każdej usługi."><value>Basket limit reached: 20 services and 20 packages per service.</value></data>
+  <data name="Strony katalogu"><value>Catalogue pages</value></data>
+  <data name="Poprzednia strona"><value>Previous page</value></data>
+  <data name="Następna strona"><value>Next page</value></data>
 </root>
