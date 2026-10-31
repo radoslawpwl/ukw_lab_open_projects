@@ -68,7 +68,7 @@ services:
     environment:
       <<: *app-environment
       ConnectionStrings__DefaultConnection: >-
-        Host=db;Port=5432;Database=${POSTGRES_DB:?Ustaw POSTGRES_DB};Username=rpbit_migrator;Password=${MIGRATION_DB_PASSWORD:-};Maximum Pool Size=2
+        Host=db;Port=5432;Database=${POSTGRES_DB:?Ustaw POSTGRES_DB};Username=rpbit_migrator;Password=${MIGRATION_DB_PASSWORD:-};Maximum Pool Size=2;GSS Encryption Mode=Disable
     depends_on:
       db:
         condition: service_healthy
@@ -80,7 +80,7 @@ services:
     environment:
       <<: *app-environment
       ConnectionStrings__DefaultConnection: >-
-        Host=db;Port=5432;Database=${POSTGRES_DB:?Ustaw POSTGRES_DB};Username=rpbit_app;Password=${APP_DB_PASSWORD:?Ustaw APP_DB_PASSWORD};Maximum Pool Size=20
+        Host=db;Port=5432;Database=${POSTGRES_DB:?Ustaw POSTGRES_DB};Username=rpbit_app;Password=${APP_DB_PASSWORD:?Ustaw APP_DB_PASSWORD};Maximum Pool Size=20;GSS Encryption Mode=Disable
     depends_on:
       db:
         condition: service_healthy
