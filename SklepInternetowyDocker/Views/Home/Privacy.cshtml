@@ -7,7 +7,7 @@
         <header class="mb-4">
             <p class="eyebrow">RP-bit / PRYWATNOŚĆ I DANE OSOBOWE</p>
             <h1 id="privacy-heading">Polityka prywatności</h1>
-            <p class="text-muted">Wersja z <time datetime="2026-10-25">25 października 2026 r.</time></p>
+            <p class="text-muted">Wersja z <time datetime="2026-10-31">31 października 2026 r.</time></p>
             <p>
                 Poniżej opisujemy, jakie dane są przetwarzane podczas korzystania ze sklepu usług RP-bit,
                 w jakich celach i na jakich zasadach. Dokument dotyczy tej aplikacji sklepu;
@@ -15,33 +15,21 @@
             </p>
         </header>
 
-        <aside class="alert alert-warning" aria-label="Status dokumentu">
-            <strong>Wersja robocza, niegotowa do publikacji jako finalna polityka.</strong>
-            Pola oznaczone „DO UZUPEŁNIENIA” wymagają potwierdzenia przez administratora.
-            Przed uruchomieniem produkcyjnym należy zweryfikować dokument, rzeczywistych dostawców,
-            retencję, transfery danych i konfigurację zabezpieczeń. Dokument nie zastępuje indywidualnej oceny prawnej.
-        </aside>
-
         <section aria-labelledby="administrator-heading">
             <h2 id="administrator-heading" class="h4 mt-5 mb-3">1. Administrator i kontakt</h2>
-            <p>Administratorem danych osobowych w sklepie działającym pod marką RP-bit jest:</p>
+            <p>Administratorem danych osobowych w serwisie jest firma RP-bit.</p>
             <dl>
-                <dt>Pełna nazwa przedsiębiorcy lub imię i nazwisko</dt>
-                <dd>[DO UZUPEŁNIENIA: podmiot prowadzący RP-bit; sama nazwa marki nie identyfikuje administratora]</dd>
-                <dt>Adres siedziby lub adres do korespondencji</dt>
-                <dd>[DO UZUPEŁNIENIA: ulica, numer, kod pocztowy, miejscowość i kraj]</dd>
-                <dt>NIP, jeżeli dotyczy</dt>
-                <dd>[DO UZUPEŁNIENIA]</dd>
+                <dt>Firma</dt>
+                <dd>RP-bit</dd>
+                <dt>Numer podatkowy</dt>
+                <dd>PL9671255358</dd>
                 <dt>Kontakt w sprawach danych osobowych</dt>
                 <dd>
                     <a asp-controller="Contact" asp-action="Index">Formularz kontaktowy</a>
                     lub <a href="mailto:contact@rp-bit.com">contact@rp-bit.com</a>
                 </dd>
             </dl>
-            <p>
-                Jeżeli został wyznaczony inspektor ochrony danych, jego dane kontaktowe należy wskazać tutaj:
-                [DO UZUPEŁNIENIA, jeśli dotyczy].
-            </p>
+            <p>W sprawach ochrony danych i realizacji swoich praw skontaktuj się bezpośrednio z RP-bit.</p>
         </section>
 
         <section aria-labelledby="data-heading">
@@ -139,9 +127,9 @@
                 Dane służą obsłudze zapytania i ewentualnemu uzgodnieniu współpracy, nie zapisowi na marketing.
             </p>
             <p>
-                W lokalnym trybie testowym wiadomości są przechwytywane przez Mailpit zamiast trafiać
-                na rzeczywistą pocztę RP-bit. Tryb ten jest oznaczony w formularzu i potwierdzeniu.
-                W testach należy używać danych fikcyjnych, a nie rzeczywistych danych klientów.
+                Poczta jest obsługiwana przez Google Workspace. Wiadomości dotyczące potwierdzenia konta,
+                zmiany adresu e-mail lub resetu hasła wysyłamy na adres użytkownika, którego dotyczy dana operacja.
+                Są to wiadomości służące obsłudze i zabezpieczeniu konta, a nie wiadomości marketingowe.
             </p>
         </section>
 
@@ -154,17 +142,28 @@
             </p>
             <ul>
                 <li class="mb-2">
-                    <strong>Hosting aplikacji, bazy danych i kopii zapasowych:</strong>
-                    [DO UZUPEŁNIENIA: rzeczywisty dostawca lub informacja o własnej infrastrukturze,
-                    lokalizacja przetwarzania i ewentualni podwykonawcy].
+                    <strong>Mikrus: hosting aplikacji i bazy danych:</strong> udostępnienie serwera,
+                    przechowywanie danych kont i profili oraz techniczne utrzymanie infrastruktury.
+                    Dostawca hostingu może mieć dostęp do danych w zakresie niezbędnym do obsługi serwera.
                 </li>
                 <li class="mb-2">
-                    <strong>Obsługa poczty elektronicznej:</strong>
-                    [DO UZUPEŁNIENIA: rzeczywisty dostawca i lokalizacja przetwarzania].
+                    <strong>Cloudflare: DNS, HTTPS, Cloudflare Tunnel i ochrona ruchu:</strong>
+                    obsługa połączeń z serwisem, w tym adresów IP, nagłówków i danych przesyłanych w żądaniach
+                    oraz odpowiedziach. Cloudflare pośredniczy w ruchu także do formularzy i stron konta.
                 </li>
                 <li class="mb-2">
-                    <strong>Obsługa księgowa i prawna, jeśli wykorzystywana:</strong>
-                    [DO UZUPEŁNIENIA: podmioty lub właściwe kategorie odbiorców dla rzeczywistej działalności].
+                    <strong>Google: Google Workspace i Google Fonts:</strong> obsługa poczty,
+                    wiadomości związanych z kontem i korespondencji oraz dostarczanie czcionek opisane poniżej.
+                    Systemy pocztowe przetwarzają adresy nadawców i odbiorców, treść oraz metadane wiadomości.
+                </li>
+                <li class="mb-2">
+                    <strong>Osoby upoważnione przez RP-bit:</strong> obsługa kont, korespondencji
+                    i kopii zapasowych, wyłącznie w zakresie potrzebnym do wykonywania obowiązków.
+                </li>
+                <li class="mb-2">
+                    <strong>Wsparcie księgowe i prawne, jeżeli jest wykorzystywane:</strong>
+                    księgowi, biura rachunkowe i doradcy prawni, w zakresie rozliczeń usług,
+                    obowiązków prawnych lub ustalenia, dochodzenia i obrony roszczeń.
                 </li>
                 <li>
                     <strong>Uprawnione organy publiczne:</strong> wyłącznie w przypadkach i zakresie wynikających z przepisów prawa.
@@ -190,10 +189,21 @@
                 Te informacje nie zastępują obowiązku administratora oceny korzystania z dostawcy.
             </p>
             <p>
-                Korzystanie z dostawców międzynarodowych może wiązać się z przetwarzaniem poza Europejskim Obszarem Gospodarczym.
-                [DO UZUPEŁNIENIA PRZED PUBLIKACJĄ: rzeczywiste państwa odbiorców i podstawa ewentualnego transferu
-                zgodnie z rozdziałem V RODO, stosowane zabezpieczenia oraz sposób uzyskania ich kopii].
-                Nie zakładamy, że sama deklaracja dostawcy lub podanie odnośnika rozstrzyga tę kwestię.
+                Google i Cloudflare korzystają z infrastruktury międzynarodowej. Dane mogą być przetwarzane
+                poza Europejskim Obszarem Gospodarczym, w tym w Stanach Zjednoczonych;
+                korzystanie z serwisu nie oznacza gwarancji przechowywania wszystkich danych wyłącznie w Polsce lub EOG.
+                Dla transferów objętych umowami powierzenia dostawcy przewidują standardowe klauzule umowne
+                zatwierdzone przez Komisję Europejską oraz, tam gdzie ma zastosowanie,
+                decyzję stwierdzającą odpowiedni stopień ochrony, w tym ramy ochrony danych UE–USA.
+            </p>
+            <p>
+                Szczegóły zabezpieczeń i podwykonawców są opisane w
+                <a href="https://cloud.google.com/terms/data-processing-addendum/" target="_blank" rel="noopener noreferrer">warunkach przetwarzania danych Google Workspace</a>
+                oraz <a href="https://www.cloudflare.com/cloudflare-customer-dpa/" target="_blank" rel="noopener noreferrer">umowie powierzenia Cloudflare</a>.
+                Pobieranie czcionek Google Fonts podlega informacjom Google o prywatności wskazanym powyżej;
+                nie jest automatycznie objęte umową Google Workspace.
+                Informację o transferach dotyczących Twoich danych i kopię właściwych zabezpieczeń
+                możesz uzyskać, kontaktując się z RP-bit, z uwzględnieniem ochrony informacji poufnych.
             </p>
         </section>
 
@@ -211,9 +221,10 @@
                 </li>
                 <li class="mb-2">
                     <strong>Korespondencja i zapytania bez zawartej umowy:</strong>
-                    [DO UZUPEŁNIENIA: konkretny okres lub precyzyjne kryterium usuwania po zakończeniu sprawy].
-                    Lokalna skrzynka testowa Mailpit przechowuje maksymalnie 100 najnowszych wiadomości;
-                    jej dane nie mają trwałego wolumenu i znikają po odtworzeniu kontenera.
+                    do zakończenia obsługi sprawy, a następnie nie dłużej niż 12 miesięcy od ostatniego kontaktu,
+                    jeżeli korespondencja jest potrzebna do kontynuacji uzgodnień.
+                    Jeśli wiadomości dotyczą zawartej umowy, obowiązku prawnego lub roszczeń,
+                    stosujemy odpowiedni okres wskazany poniżej.
                 </li>
                 <li class="mb-2">
                     <strong>Dokumentacja wykonanych usług i roszczeń:</strong> przez czas niezbędny do realizacji umowy,
@@ -224,9 +235,18 @@
                     w którym upłynął termin płatności podatku, z uwzględnieniem przepisów szczególnych,
                     zawieszenia lub przerwania biegu przedawnienia. Nie należy utożsamiać tego terminu automatycznie z datą wystawienia faktury.
                 </li>
+                <li class="mb-2">
+                    <strong>Logi techniczne serwisu:</strong> do usunięcia najstarszych wpisów w rotacji
+                    o ograniczonym rozmiarze. Produkcyjna konfiguracja kontenerów ogranicza logi każdej usługi
+                    do trzech plików po 10 MiB; czas zachowania wpisu zależy od ilości ruchu i zdarzeń.
+                    Dane wyodrębnione do wyjaśnienia incydentu mogą być przechowywane do zakończenia sprawy
+                    i, jeśli jest to konieczne, przez właściwy okres dochodzenia lub obrony roszczeń.
+                </li>
                 <li>
-                    <strong>Logi i kopie zapasowe:</strong>
-                    [DO UZUPEŁNIENIA: faktyczny okres retencji logów, cykl nadpisywania kopii i zasady usuwania danych z kopii].
+                    <strong>Kopie odtworzeniowe utrzymywane przez RP-bit:</strong> nie dłużej niż 28 dni
+                    od wykonania kopii. Dane usunięte z aktywnej bazy mogą pozostać w starszych kopiach
+                    do ich wycofania w tym cyklu. Kopie służą wyłącznie odtwarzaniu po awarii;
+                    po odtworzeniu ponownie uwzględniamy wcześniej zrealizowane żądania usunięcia.
                 </li>
             </ul>
             <p>

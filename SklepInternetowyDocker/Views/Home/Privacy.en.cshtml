@@ -7,32 +7,24 @@
         <header class="mb-4">
             <p class="eyebrow">RP-bit / PRIVACY AND PERSONAL DATA</p>
             <h1 id="privacy-heading">Privacy policy</h1>
-            <p class="text-muted">Version dated <time datetime="2026-10-25">25 October 2026</time></p>
+            <p class="text-muted">Version dated <time datetime="2026-10-31">31 October 2026</time></p>
             <p>This policy explains how personal data is processed in the RP-bit service store.
                 Linked external websites may have separate privacy policies.</p>
         </header>
 
-        <aside class="alert alert-warning" aria-label="Document status">
-            <strong>Draft, not ready for publication as a final policy.</strong>
-            Items marked TO BE COMPLETED must be confirmed by the controller before production use.
-            Review the actual providers, retention, international transfers and security configuration.
-            This document does not replace individual legal advice. Both language versions are drafts.
-        </aside>
-
         <section aria-labelledby="administrator-heading">
             <h2 id="administrator-heading" class="h4 mt-5 mb-3">1. Controller and contact</h2>
+            <p>RP-bit is the controller of personal data processed through this service.</p>
             <dl>
-                <dt>Full legal name of the business or individual operating RP-bit</dt>
-                <dd>[TO BE COMPLETED: the brand name alone does not identify the controller]</dd>
-                <dt>Registered or correspondence address</dt>
-                <dd>[TO BE COMPLETED: street, number, postal code, city and country]</dd>
-                <dt>Tax identification number, if applicable</dt>
-                <dd>[TO BE COMPLETED]</dd>
+                <dt>Business</dt>
+                <dd>RP-bit</dd>
+                <dt>Tax identification number</dt>
+                <dd>PL9671255358</dd>
                 <dt>Personal data enquiries</dt>
                 <dd><a asp-controller="Contact" asp-action="Index">Contact form</a> or
                     <a href="mailto:contact@rp-bit.com">contact@rp-bit.com</a></dd>
             </dl>
-            <p>Data protection officer's contact details, if appointed: [TO BE COMPLETED, if applicable].</p>
+            <p>Contact RP-bit directly about data protection and the exercise of your rights.</p>
         </section>
 
         <section aria-labelledby="data-heading">
@@ -78,15 +70,16 @@
 
         <section aria-labelledby="inquiry-heading">
             <h2 id="inquiry-heading" class="h4 mt-5 mb-3">4. Contact form and enquiries</h2>
-            <p>Enquiries from the basket include a draft list and estimated total; a service-page
+            <p>Enquiries from the basket include a pre-filled list and estimated total; a service-page
                 enquiry includes its name and indicative price. You may edit the message.
                 Profile details are not automatically attached.</p>
             <p>The form sends data through the configured SMTP server to the controller's inbox.
                 Your email is used as Reply-To, not as the sender. No automatic copy is sent to you.
                 Messages are not saved in the store's database, but may be retained in mail systems and backups.
                 An enquiry is not marketing registration.</p>
-            <p>In local test mode Mailpit intercepts messages instead of sending them to the real
-                RP-bit mailbox. The form and confirmation identify this mode. Use fictional data only.</p>
+            <p>Email is handled through Google Workspace. Account confirmation, email-address
+                changes and password-reset messages go to the user concerned. These messages
+                support account operation and security, not marketing.</p>
         </section>
 
         <section aria-labelledby="recipients-heading">
@@ -94,10 +87,19 @@
             <p>Authorised persons and providers may access data only as needed. Required processing
                 arrangements must be in place where a provider acts as a processor.</p>
             <ul>
-                <li>Application, database and backup hosting: [TO BE COMPLETED: actual provider,
-                    processing locations and subprocessors, or details of own infrastructure].</li>
-                <li>Email: [TO BE COMPLETED: provider and processing locations].</li>
-                <li>Accounting/legal support, if used: [TO BE COMPLETED: actual entities or relevant categories].</li>
+                <li><strong>Mikrus: application and database hosting:</strong> server provision,
+                    storage of account/profile data and technical infrastructure operation.
+                    The hosting provider may access data as necessary to support the server.</li>
+                <li><strong>Cloudflare: DNS, HTTPS, Cloudflare Tunnel and traffic protection:</strong>
+                    handling connections, including IP addresses, headers and data in requests
+                    and responses. Cloudflare also handles traffic to forms and account pages.</li>
+                <li><strong>Google: Google Workspace and Google Fonts:</strong> email,
+                    account-related messages, correspondence and the fonts described below.
+                    Mail systems process sender/recipient addresses, message content and metadata.</li>
+                <li><strong>Persons authorised by RP-bit:</strong> account, correspondence
+                    and backup administration, only as needed for their duties.</li>
+                <li><strong>Accounting/legal support, if used:</strong> accountants, accounting
+                    firms and legal advisers for service billing, legal obligations and claims.</li>
                 <li>Public authorities: only as required or permitted by law.</li>
             </ul>
             <p>We do not sell users' personal data.</p>
@@ -113,9 +115,19 @@
                 <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener noreferrer">Google Fonts privacy FAQ</a>
                 and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google privacy policy</a>.
                 These links do not replace the controller's assessment.</p>
-            <p>[TO BE COMPLETED BEFORE PUBLICATION: actual recipient countries, any transfers outside
-                the EEA, their legal basis under GDPR Chapter V, safeguards and how to obtain a copy].
-                A provider's statement alone does not settle these obligations.</p>
+            <p>Google and Cloudflare use international infrastructure. Data may be processed outside
+                the European Economic Area, including in the United States. This service does not
+                guarantee that all data stays in Poland or the EEA. For transfers covered by their
+                processing agreements, providers include European Commission-approved standard
+                contractual clauses and, where applicable, adequacy decisions including the EU-US
+                Data Privacy Framework.</p>
+            <p>Safeguards and subprocessors are described in the
+                <a href="https://cloud.google.com/terms/data-processing-addendum/" target="_blank" rel="noopener noreferrer">Google Workspace data processing terms</a>
+                and <a href="https://www.cloudflare.com/cloudflare-customer-dpa/" target="_blank" rel="noopener noreferrer">Cloudflare data processing addendum</a>.
+                Google Fonts requests are subject to the Google privacy information linked above,
+                not automatically to the Google Workspace agreement. Contact RP-bit for information
+                about transfers affecting your data and a copy of the relevant safeguards,
+                subject to the protection of confidential information.</p>
         </section>
 
         <section aria-labelledby="retention-heading">
@@ -124,13 +136,23 @@
                 <li>Account/profile: for the account's lifetime. Deletion does not automatically erase
                     correspondence or records retained on another legal basis.</li>
                 <li>Basket: session data expires after 30 minutes of inactivity; in-memory data may also be lost on restart.</li>
-                <li>Uncontracted enquiries: [TO BE COMPLETED: a specific period or precise deletion criterion].
-                    Local Mailpit retains up to 100 recent messages and has no persistent mail volume.</li>
+                <li>Uncontracted enquiries: until the matter is closed, then no longer than 12 months
+                    from the last contact where correspondence is needed for further discussions.
+                    Messages relating to a contract, legal obligation or claim follow the relevant
+                    retention period below.</li>
                 <li>Service records/claims: for performance and the applicable limitation or mandatory retention period.</li>
                 <li>Tax records: generally five years from the end of the calendar year in which the
                     payment deadline expired, subject to specific rules and suspension/interruption.
                     This is not automatically five years from the invoice date.</li>
-                <li>Logs/backups: [TO BE COMPLETED: actual retention, overwrite cycle and deletion rules].</li>
+                <li>Service technical logs: until the oldest entries are removed through size-limited
+                    rotation. The production container configuration limits each service to three
+                    10 MiB files; elapsed retention depends on traffic and events. Records preserved
+                    for an incident may be kept until it is resolved and, if necessary, for the
+                    applicable period for establishing, exercising or defending claims.</li>
+                <li>Recovery backups maintained by RP-bit: no longer than 28 days from creation.
+                    Data deleted from the active database may remain in older backups until retired
+                    within this cycle. Backups are used only for disaster recovery; after restoration,
+                    previously fulfilled erasure requests are applied again.</li>
             </ul>
             <p>Data must not be retained indefinitely just in case. When the purpose or legal basis
                 ends, delete or effectively anonymise it, subject to legal duties and backup rules.</p>
