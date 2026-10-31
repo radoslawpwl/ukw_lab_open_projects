@@ -4,6 +4,8 @@ Projekt edukacyjny aplikacji internetowej z katalogiem usług IT.
 Pozwala przeglądać ofertę, dodawać usługi do koszyka i wysyłać
 zapytania przez formularz kontaktowy.
 
+Projekt uruchomiony pod adresem: services.rp-bit.net
+
 ## Funkcje
 
 - Katalog usług z filtrowaniem kategorii i szczegółami oferty.
