@@ -62,8 +62,8 @@ services:
       ContactMail__Security: ${CONTACT_SMTP_SECURITY:-None}
       ContactMail__Username: ${CONTACT_SMTP_USERNAME:-}
       ContactMail__Password: ${CONTACT_SMTP_PASSWORD:-}
-      ContactMail__SenderAddress: ${CONTACT_SMTP_FROM:-contact@rp-bit.com}
-      ContactMail__RecipientAddress: ${CONTACT_SMTP_TO:-contact@rp-bit.com}
+      ContactMail__SenderAddress: ${CONTACT_SMTP_FROM:-contact@rp-bit.net}
+      ContactMail__RecipientAddress: ${CONTACT_SMTP_TO:-contact@rp-bit.net}
       ContactMail__TestMode: ${CONTACT_SMTP_TEST_MODE:-true}
     ports:
       - "127.0.0.1:8080:8080"

@@ -7,7 +7,7 @@ public class ContactMailOptions
     public string Security { get; set; } = "StartTls";
     public string Username { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
-    public string SenderAddress { get; set; } = "contact@rp-bit.com";
-    public string RecipientAddress { get; set; } = "contact@rp-bit.com";
+    public string SenderAddress { get; set; } = "contact@rp-bit.net";
+    public string RecipientAddress { get; set; } = "contact@rp-bit.net";
     public bool TestMode { get; set; }
 }

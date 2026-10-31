@@ -153,9 +153,36 @@ def run_checks(config, image):
     assert browser.request("/Products?page=-1")[0] == 400
     assert browser.request("/Products?page=2147483647")[0] == 400
     assert browser.request("/Identity/Account/Manage")[1].startswith("/Identity/Account/Login")
-    for path in ["/Cart/Add", "/Language/Change", "/Identity/Account/Login", "/Identity/Account/Register"]:
+    for path in ["/Cart/Add", "/Language/Change", "/Contact", "/Identity/Account/Login", "/Identity/Account/Register"]:
         assert browser.request(path, {})[0] == 400, (path, "CSRF")
     print("PASS: CSP/nonce, headers, host validation, pagination bounds, authorization, CSRF")
+
+    for culture in ("pl-PL", "en-GB"):
+        status, _, privacy, headers = Browser().request("/Home/Privacy", headers={
+            "Cookie": f".AspNetCore.Culture=c={culture}|uic={culture}"})
+        assert status == 200 and headers["Content-Language"] == culture
+        assert privacy.count("mailto:contact@rp-bit.net") == 2
+        assert "Microsoft 365 / Exchange Online" in privacy and "PL9671255358" in privacy
+        assert "Google Fonts" in privacy and "Google Workspace" not in privacy
+        assert "mailto:contact@rp-bit.com" not in privacy
+    print("PASS: PL/EN privacy, Microsoft 365 mail provider and contact@rp-bit.net")
+
+    contact_email = "contact-" + uuid.uuid4().hex + "@example.invalid"
+    contact_body = "SMTP routing regression check " + uuid.uuid4().hex
+    status, path, _, _ = Browser().post("/Contact", {
+        "Name": "SMTP regression test", "Email": contact_email,
+        "Topic": "Other", "Message": contact_body})
+    assert status == 200 and path == "/Contact/Sent"
+    with urllib.request.urlopen(MAIL + "/api/v1/messages", timeout=20) as response:
+        messages = json.load(response)["messages"]
+    message = next(message for message in messages
+                   if message["To"] == [{"Name": "", "Address": "contact@rp-bit.net"}])
+    assert message["From"]["Address"] == "contact@rp-bit.net"
+    with urllib.request.urlopen(MAIL + "/api/v1/message/" + message["ID"], timeout=20) as response:
+        delivery = json.load(response)
+    assert delivery["ReplyTo"] == [{"Name": "", "Address": contact_email}]
+    assert contact_body in delivery["Text"]
+    print("PASS: contact goes to contact@rp-bit.net with visitor Reply-To in isolated Mailpit")
 
     add = next(form for form in forms(content) if form["action"] == "/Cart/Add")
     for _ in range(21):
